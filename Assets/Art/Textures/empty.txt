@@ -1,0 +1,2 @@
+Don't delete me unless the folder is not empty!
+Otherwise, git will screw up!
