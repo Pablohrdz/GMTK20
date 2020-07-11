@@ -5,7 +5,6 @@ public class Emitter : MonoBehaviour
 {
     public KeyCode linkedKey;
     public float emissionForce;
-    public Vector2 offset;
     public GameObject letter;
 
     // this should start out as false if we end up using preset positions for the punctures
