@@ -128,6 +128,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 126356585, guid: 7a2ce8647e4436744b0138b8e2c21aa0, type: 3}
+      propertyPath: emissionForce
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 982380394641062533, guid: 7a2ce8647e4436744b0138b8e2c21aa0,
         type: 3}
       propertyPath: m_Size.x
