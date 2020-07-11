@@ -36,7 +36,6 @@ public class SubmarineController : MonoBehaviour
                 emitter.enableLetter();
                 Vector3 force = -emitter.transform.forward.normalized * emitter.emissionForce;
                 rb.AddForceAtPosition(force, emitter.transform.position);
-                //rb.AddForce();
             }
             else
             {
