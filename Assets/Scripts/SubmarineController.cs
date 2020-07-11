@@ -72,6 +72,7 @@ public class SubmarineController : MonoBehaviour
                 transform);
             Emitter emitter = emitterGO.GetComponent<Emitter>();
             emitter.setLinkedKey(collision.gameObject.GetComponent<Enemy>().linkedKey);
+            emitter.enableLetter();
             emitter.emissionForce = enemy.emissionForce;
             emitters.Add(emitter.GetComponent<Emitter>());
         }
