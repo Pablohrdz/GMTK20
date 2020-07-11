@@ -10,6 +10,7 @@ public class SubmarineController : MonoBehaviour
     List<Emitter> emitters;
     Rigidbody2D rb;
     public List<GameObject> pool;
+    public bool HasCollectedPearl;
 
     void Start()
     {
