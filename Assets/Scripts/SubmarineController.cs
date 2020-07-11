@@ -39,13 +39,13 @@ public class SubmarineController : MonoBehaviour
             emitter.enableParticles(!holeCovered);
             if (!holeCovered)
             {
-                emitter.enableLetter();
+                emitter.disableLetter();
                 Vector3 force = -emitter.transform.forward.normalized * emitter.emissionForce;
                 rb.AddForceAtPosition(force, emitter.transform.position);
             }
             else
             {
-               emitter.disableLetter();
+               emitter.enableLetter();
             }
         }
         if (Input.GetKeyDown(KeyCode.O))
@@ -74,15 +74,15 @@ public class SubmarineController : MonoBehaviour
             Emitter emitter = emitterGO.GetComponent<Emitter>();
             emitter.setLinkedKey(collision.gameObject.GetComponent<Enemy>().linkedKey);
             emitter.emissionForce = enemy.emissionForce;
-            //var prefab = pool.Find(p => p.name == emitter.linkedKey.ToString());
-            //GameObject letter = Instantiate(
-            //    stampPrefab,
-            //    new Vector3(point.x, point.y, 0),
-            //    Quaternion.identity,
-            //    transform.Find("Letters"));
             emitter.letter = InstantiateLetter(emitter);
             emitter.enableLetter();
             emitters.Add(emitter.GetComponent<Emitter>());
+        }
+        var swapper = collision.gameObject.GetComponent<Swapper>();
+        if (swapper != null)
+        {
+            SwapLetters();
+            Destroy(collision.gameObject); // TODO: animate, remember to disable collider while it fades
         }
     }
 
@@ -114,10 +114,6 @@ public class SubmarineController : MonoBehaviour
         AssignLetterToEmitter(em1, kc2);
         AssignLetterToEmitter(em2, kc1);
 
-        //em1.linkedKey = kc2;
-        //em2.linkedKey = kc1;
-        //InstantiateLetter(em1);
-        //InstantiateLetter(em2);
     }
 
     private void AssignLetterToEmitter(Emitter emitter, KeyCode kc)

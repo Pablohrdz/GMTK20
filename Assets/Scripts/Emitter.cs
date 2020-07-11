@@ -30,12 +30,16 @@ public class Emitter : MonoBehaviour
 
     public void enableLetter()
     {
-        letter.SetActive(true);
+        var color = letter.transform.Find("Sticker").GetComponent<SpriteRenderer>().color;
+        color.a = 1f;
+        letter.transform.Find("Sticker").GetComponent<SpriteRenderer>().color = color;
     }
 
     public void disableLetter()
     {
-        letter.SetActive(false);
+        var color = letter.transform.Find("Sticker").GetComponent<SpriteRenderer>().color;
+        color.a = .5f;
+        letter.transform.Find("Sticker").GetComponent<SpriteRenderer>().color = color;
     }
 
 }
