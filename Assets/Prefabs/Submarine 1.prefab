@@ -69,7 +69,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 0e108fc503454f64694dcf40f2c04a58, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -184,7 +184,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 485a2292a5ed17440a00582c40cab31e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -806,7 +806,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 67caed370059cb848be6190e28f12afe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -887,7 +887,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 5b3b4516c245294459a55e56601264b9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -968,7 +968,7 @@ PrefabInstance:
     - target: {fileID: 6672396767009706943, guid: 9fbef9734cd7a44f093d4a71ef25beaf,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.081
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6672396767009706943, guid: 9fbef9734cd7a44f093d4a71ef25beaf,
         type: 3}
@@ -1078,7 +1078,7 @@ PrefabInstance:
     - target: {fileID: 6672396767009706943, guid: 9fbef9734cd7a44f093d4a71ef25beaf,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.081
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 6672396767009706943, guid: 9fbef9734cd7a44f093d4a71ef25beaf,
         type: 3}
@@ -1183,12 +1183,12 @@ PrefabInstance:
     - target: {fileID: 6672396767009706943, guid: 9fbef9734cd7a44f093d4a71ef25beaf,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6672396767009706943, guid: 9fbef9734cd7a44f093d4a71ef25beaf,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.081
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6672396767009706943, guid: 9fbef9734cd7a44f093d4a71ef25beaf,
         type: 3}
@@ -1293,12 +1293,12 @@ PrefabInstance:
     - target: {fileID: 6672396767009706943, guid: 9fbef9734cd7a44f093d4a71ef25beaf,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 6672396767009706943, guid: 9fbef9734cd7a44f093d4a71ef25beaf,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.081
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6672396767009706943, guid: 9fbef9734cd7a44f093d4a71ef25beaf,
         type: 3}

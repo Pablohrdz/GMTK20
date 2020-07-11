@@ -21,8 +21,10 @@ public class SubmarineController : MonoBehaviour
             Emitter emitter = child.GetComponent<Emitter>();
             if (emitter != null)
             {
-                emitter.letter.transform.position = transform.position + new Vector3(emitter.offset.x, emitter.offset.y);
+                //emitter.letter.transform.position = transform.position + new Vector3(emitter.offset.x, emitter.offset.y);
+                AssignLeterToEmitter(emitter, emitter.linkedKey);
                 emitters.Add(emitter);
+
             }
         }
     }
@@ -96,7 +98,7 @@ public class SubmarineController : MonoBehaviour
     {
         emitter.linkedKey = kc;
         emitter.letter = GetKeyBox(kc).gameObject;
-        emitter.letter.transform.position = transform.position + new Vector3(emitter.offset.x, emitter.offset.y);
+        emitter.letter.transform.position = emitter.transform.position;
     }
 
     private Transform GetKeyBox(KeyCode key)
