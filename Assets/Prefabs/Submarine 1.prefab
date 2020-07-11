@@ -270,7 +270,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 35a6fd95674ba4b599d541a82e80868b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -295,6 +295,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   emitterPrefab: {fileID: 6672396767009706936, guid: 9fbef9734cd7a44f093d4a71ef25beaf,
+    type: 3}
+  stampPrefab: {fileID: 8041699302365139390, guid: 398362f924eba6f48b3e6e7e8675ec33,
     type: 3}
   pool:
   - {fileID: 3116591016383256482, guid: 55761c80c1427ba42aadb9791b771899, type: 3}

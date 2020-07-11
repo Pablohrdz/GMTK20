@@ -27,13 +27,19 @@ public class Emitter : MonoBehaviour
     {
         linkedKey = keyCode;
     }
+
     public void enableLetter()
     {
-        letter.GetComponent<SpriteRenderer>().enabled = true;
+        var color = letter.transform.Find("Sticker").GetComponent<SpriteRenderer>().color;
+        color.a = 1f;
+        letter.transform.Find("Sticker").GetComponent<SpriteRenderer>().color = color;
     }
+
     public void disableLetter()
     {
-        letter.GetComponent<SpriteRenderer>().enabled = false;
+        var color = letter.transform.Find("Sticker").GetComponent<SpriteRenderer>().color;
+        color.a = .5f;
+        letter.transform.Find("Sticker").GetComponent<SpriteRenderer>().color = color;
     }
 
 }
