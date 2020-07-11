@@ -7,11 +7,11 @@ public class SubmarineController : MonoBehaviour
     // move to each individual emitter?
     public float emissionForce; 
     List<Emitter> emitters;
-    Rigidbody rb;
+    Rigidbody2D rb;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
 
         emitters = new List<Emitter>();
         foreach(Transform child in transform)
