@@ -1,19 +1,7 @@
 fileFormatVersion: 2
-guid: c0e66f8223d004d4a87d7597d12b67c6
+guid: 39e24d96d438a464eb3014575283a5e8
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 865298605616314441
-    second: spite sheet pez_0
-  - first:
-      213: -3905886522221519030
-    second: spite sheet pez_1
-  - first:
-      213: -3068403784660465801
-    second: spite sheet pez_2
-  - first:
-      213: -6543327387840725349
-    second: spite sheet pez_3
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -52,7 +40,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -109,95 +97,11 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: spite sheet pez_0
-      rect:
-        serializedVersion: 2
-        x: 33
-        y: 243
-        width: 638
-        height: 220
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 948b66c4f78220c00800000000000000
-      internalID: 865298605616314441
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spite sheet pez_1
-      rect:
-        serializedVersion: 2
-        x: 749
-        y: 260
-        width: 657
-        height: 202
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a4f100ef6e08bc9c0800000000000000
-      internalID: -3905886522221519030
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spite sheet pez_2
-      rect:
-        serializedVersion: 2
-        x: 1470
-        y: 258
-        width: 639
-        height: 203
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 77749d3d307da65d0800000000000000
-      internalID: -3068403784660465801
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spite sheet pez_3
-      rect:
-        serializedVersion: 2
-        x: 2190
-        y: 278
-        width: 641
-        height: 180
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b9e3ba6a86e6135a0800000000000000
-      internalID: -6543327387840725349
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: caed75e26b7d88b40ab561d4ef6d5fa4
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -206,7 +110,7 @@ TextureImporter:
     secondaryTextures: []
   spritePackingTag: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 1
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
