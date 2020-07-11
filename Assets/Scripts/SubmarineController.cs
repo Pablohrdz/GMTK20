@@ -67,7 +67,7 @@ public class SubmarineController : MonoBehaviour
                 emitterPrefab,
                 new Vector3(point.x, point.y, 0),
                 Quaternion.LookRotation(-contact.normal),
-                transform);
+                transform.Find("Emitters"));
             Emitter emitter = emitterGO.GetComponent<Emitter>();
             emitter.setLinkedKey(collision.gameObject.GetComponent<Enemy>().linkedKey);
             emitter.emissionForce = enemy.emissionForce;
