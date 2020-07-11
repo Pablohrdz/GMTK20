@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class SubmarineController : MonoBehaviour
@@ -33,7 +32,9 @@ public class SubmarineController : MonoBehaviour
             emitter.enableParticles(!holeCovered);
             if (!holeCovered)
             {
-                rb.AddForce(-emitter.transform.forward.normalized * emitter.emissionForce);
+                Vector3 force = -emitter.transform.forward.normalized * emitter.emissionForce;
+                rb.AddForceAtPosition(force, emitter.transform.position);
+                //rb.AddForce();
             }
         }
     }
