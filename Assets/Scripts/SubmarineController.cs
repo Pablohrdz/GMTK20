@@ -7,12 +7,10 @@ public class SubmarineController : MonoBehaviour
     public GameObject emitterPrefab;
     List<Emitter> emitters;
     Rigidbody2D rb;
-
-    private KeyCode[] keyPool;
+    public List<GameObject> pool;
 
     void Start()
     {
-        keyPool = new KeyCode[] { KeyCode.A, KeyCode.S, KeyCode.D, KeyCode.F};
         rb = GetComponent<Rigidbody2D>();
 
         emitters = new List<Emitter>();
@@ -22,7 +20,7 @@ public class SubmarineController : MonoBehaviour
             if (emitter != null)
             {
                 //emitter.letter.transform.position = transform.position + new Vector3(emitter.offset.x, emitter.offset.y);
-                AssignLeterToEmitter(emitter, emitter.linkedKey);
+                AssignLetterToEmitter(emitter, emitter.linkedKey);
                 emitters.Add(emitter);
 
             }
@@ -69,13 +67,22 @@ public class SubmarineController : MonoBehaviour
                 emitterPrefab,
                 new Vector3(point.x, point.y, 0),
                 Quaternion.LookRotation(-contact.normal),
-                transform);
+                transform.Find("Emitters"));
             Emitter emitter = emitterGO.GetComponent<Emitter>();
             emitter.setLinkedKey(collision.gameObject.GetComponent<Enemy>().linkedKey);
             emitter.emissionForce = enemy.emissionForce;
+            var prefab = pool.Find(p => p.name == emitter.linkedKey.ToString());
+            GameObject letter = Instantiate(
+                prefab,
+                new Vector3(point.x, point.y, 0),
+                Quaternion.identity,
+                transform.Find("Letters"));
+            emitter.letter = letter;
+            emitter.enableLetter();
             emitters.Add(emitter.GetComponent<Emitter>());
         }
     }
+
 
     private void SwapLetters()
     {
@@ -89,21 +96,22 @@ public class SubmarineController : MonoBehaviour
         Emitter em2 = transform.Find("Emitters").GetChild(letter2).GetComponent<Emitter>();
         KeyCode kc2 = em2.linkedKey;
 
-        AssignLeterToEmitter(em1, kc2);
-        AssignLeterToEmitter(em2, kc1);
+        AssignLetterToEmitter(em1, kc2);
+        AssignLetterToEmitter(em2, kc1);
 
     }
 
-    private void AssignLeterToEmitter(Emitter emitter, KeyCode kc)
+    private void AssignLetterToEmitter(Emitter emitter, KeyCode kc)
     {
         emitter.linkedKey = kc;
-        emitter.letter = GetKeyBox(kc).gameObject;
-        emitter.letter.transform.position = emitter.transform.position;
+        Object.Destroy(emitter.letter);
+        var prefab = pool.Find(p => p.name == emitter.linkedKey.ToString());
+        GameObject letter = Instantiate(
+            prefab,
+            new Vector3(emitter.transform.position.x, emitter.transform.position.y, 0),
+            Quaternion.identity,
+            transform.Find("Letters"));
+        emitter.letter = letter;
     }
 
-    private Transform GetKeyBox(KeyCode key)
-    {
-        string name = key.ToString();
-        return transform.Find("Letters").Find(name);
-    }
 }
