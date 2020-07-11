@@ -13,7 +13,7 @@ public class SubmarineController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         emitters = new List<Emitter>();
-        foreach(Transform child in transform.Find("Ivan"))
+        foreach(Transform child in transform.Find("Emitters"))
         {
             Emitter emitter = child.GetComponent<Emitter>();
             if (emitter != null)
