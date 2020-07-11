@@ -27,10 +27,12 @@ public class Emitter : MonoBehaviour
     {
         linkedKey = keyCode;
     }
+
     public void enableLetter()
     {
         letter.GetComponent<SpriteRenderer>().enabled = true;
     }
+
     public void disableLetter()
     {
         letter.GetComponent<SpriteRenderer>().enabled = false;
