@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 
 public class SubmarineController : MonoBehaviour
 {
     // move emissionForce to each individual emitter and enemy?
     public GameObject emitterPrefab;
+    public GameObject stampPrefab;
     List<Emitter> emitters;
     Rigidbody2D rb;
     public List<GameObject> pool;
@@ -20,7 +22,8 @@ public class SubmarineController : MonoBehaviour
             if (emitter != null)
             {
                 //emitter.letter.transform.position = transform.position + new Vector3(emitter.offset.x, emitter.offset.y);
-                AssignLetterToEmitter(emitter, emitter.linkedKey);
+                ///AssignLetterToEmitter(emitter, emitter.linkedKey);
+                emitter.letter = InstantiateLetter(emitter);
                 emitters.Add(emitter);
 
             }
@@ -71,18 +74,30 @@ public class SubmarineController : MonoBehaviour
             Emitter emitter = emitterGO.GetComponent<Emitter>();
             emitter.setLinkedKey(collision.gameObject.GetComponent<Enemy>().linkedKey);
             emitter.emissionForce = enemy.emissionForce;
-            var prefab = pool.Find(p => p.name == emitter.linkedKey.ToString());
-            GameObject letter = Instantiate(
-                prefab,
-                new Vector3(point.x, point.y, 0),
-                Quaternion.identity,
-                transform.Find("Letters"));
-            emitter.letter = letter;
+            //var prefab = pool.Find(p => p.name == emitter.linkedKey.ToString());
+            //GameObject letter = Instantiate(
+            //    stampPrefab,
+            //    new Vector3(point.x, point.y, 0),
+            //    Quaternion.identity,
+            //    transform.Find("Letters"));
+            emitter.letter = InstantiateLetter(emitter);
             emitter.enableLetter();
             emitters.Add(emitter.GetComponent<Emitter>());
         }
     }
 
+    private GameObject InstantiateLetter(Emitter emitter)
+    {
+        if (stampPrefab == null)
+            throw new System.Exception("missing stamp prefab");
+        GameObject letter = Instantiate(
+            stampPrefab,
+            new Vector3(emitter.transform.position.x, emitter.transform.position.y, 0),
+            Quaternion.identity,
+            transform.Find("Letters"));
+        letter.transform.Find("Text").GetComponent<TextMesh>().text = emitter.linkedKey.ToString();
+        return letter;
+    }
 
     private void SwapLetters()
     {
@@ -99,19 +114,17 @@ public class SubmarineController : MonoBehaviour
         AssignLetterToEmitter(em1, kc2);
         AssignLetterToEmitter(em2, kc1);
 
+        //em1.linkedKey = kc2;
+        //em2.linkedKey = kc1;
+        //InstantiateLetter(em1);
+        //InstantiateLetter(em2);
     }
 
     private void AssignLetterToEmitter(Emitter emitter, KeyCode kc)
     {
         emitter.linkedKey = kc;
         Object.Destroy(emitter.letter);
-        var prefab = pool.Find(p => p.name == emitter.linkedKey.ToString());
-        GameObject letter = Instantiate(
-            prefab,
-            new Vector3(emitter.transform.position.x, emitter.transform.position.y, 0),
-            Quaternion.identity,
-            transform.Find("Letters"));
-        emitter.letter = letter;
+        emitter.letter = InstantiateLetter(emitter);
     }
 
 }

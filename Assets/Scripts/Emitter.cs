@@ -30,12 +30,12 @@ public class Emitter : MonoBehaviour
 
     public void enableLetter()
     {
-        letter.GetComponent<SpriteRenderer>().enabled = true;
+        letter.SetActive(true);
     }
 
     public void disableLetter()
     {
-        letter.GetComponent<SpriteRenderer>().enabled = false;
+        letter.SetActive(false);
     }
 
 }
