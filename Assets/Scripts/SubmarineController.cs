@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SubmarineController : MonoBehaviour
 {
-    // move to each individual emitter?
-    public float emissionForce; 
+    // move emissionForce to each individual emitter and enemy?
+    public GameObject emitterPrefab;
     List<Emitter> emitters;
     Rigidbody2D rb;
 
@@ -33,8 +33,32 @@ public class SubmarineController : MonoBehaviour
             emitter.enableParticles(!holeCovered);
             if (!holeCovered)
             {
-                rb.AddForce(-emitter.transform.forward.normalized * emissionForce);
+                rb.AddForce(-emitter.transform.forward.normalized * emitter.emissionForce);
             }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        var enemy = collision.gameObject.GetComponent<Enemy>();
+        if (enemy != null)
+        {
+            Destroy(collision.gameObject); // TODO: animate, remember to disable collider while it fades
+
+            // TODO: there should only be one hit, but we should double check...
+            ContactPoint2D contact = collision.contacts[0];
+
+            Debug.DrawRay(contact.point, contact.normal, Color.green, 2, false);
+            Vector2 point = contact.point;
+            GameObject emitterGO = Instantiate(
+                emitterPrefab,
+                new Vector3(point.x, point.y, 0),
+                Quaternion.LookRotation(-contact.normal),
+                transform);
+            Emitter emitter = emitterGO.GetComponent<Emitter>();
+            emitter.setLinkedKey(collision.gameObject.GetComponent<Enemy>().linkedKey);
+            emitter.emissionForce = enemy.emissionForce;
+            emitters.Add(emitter.GetComponent<Emitter>());
         }
     }
 }
