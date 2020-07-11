@@ -296,6 +296,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   emitterPrefab: {fileID: 6672396767009706936, guid: 9fbef9734cd7a44f093d4a71ef25beaf,
     type: 3}
+  pool:
+  - {fileID: 3116591016383256482, guid: 55761c80c1427ba42aadb9791b771899, type: 3}
+  - {fileID: 5092523413458556604, guid: 286a55e6f0dd438459cfa6c6ede4631f, type: 3}
+  - {fileID: 7179650598687833158, guid: c4cca1aefb183794b9db0e15a3560905, type: 3}
+  - {fileID: 1936709256790399387, guid: 7bdcb403805aa73489300f3609e982ea, type: 3}
 --- !u!50 &975443978468954046
 Rigidbody2D:
   serializedVersion: 4
