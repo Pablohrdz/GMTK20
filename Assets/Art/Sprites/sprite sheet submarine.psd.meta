@@ -144,12 +144,12 @@ TextureImporter:
       name: sprite sheet submarine_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 720
-        height: 720
+        x: 14
+        y: 2
+        width: 710
+        height: 645
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -165,12 +165,12 @@ TextureImporter:
       name: sprite sheet submarine_1
       rect:
         serializedVersion: 2
-        x: 720
-        y: 0
-        width: 720
-        height: 720
+        x: 734
+        y: 3
+        width: 710
+        height: 645
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -186,12 +186,12 @@ TextureImporter:
       name: sprite sheet submarine_2
       rect:
         serializedVersion: 2
-        x: 1440
-        y: 0
-        width: 720
-        height: 720
+        x: 1456
+        y: 7
+        width: 710
+        height: 645
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -207,12 +207,12 @@ TextureImporter:
       name: sprite sheet submarine_3
       rect:
         serializedVersion: 2
-        x: 2160
+        x: 2179
         y: 0
-        width: 720
-        height: 720
+        width: 710
+        height: 645
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -228,12 +228,12 @@ TextureImporter:
       name: sprite sheet submarine_4
       rect:
         serializedVersion: 2
-        x: 2880
-        y: 0
-        width: 720
-        height: 720
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2887
+        y: 45
+        width: 710
+        height: 645
+      alignment: 9
+      pivot: {x: 0.50604266, y: 0.49999994}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -249,12 +249,12 @@ TextureImporter:
       name: sprite sheet submarine_5
       rect:
         serializedVersion: 2
-        x: 3600
-        y: 0
-        width: 720
-        height: 720
+        x: 3609
+        y: 1
+        width: 710
+        height: 645
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
