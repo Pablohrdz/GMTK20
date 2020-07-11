@@ -13,11 +13,12 @@ public class SubmarineController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         emitters = new List<Emitter>();
-        foreach(Transform child in transform)
+        foreach(Transform child in transform.Find("Ivan"))
         {
             Emitter emitter = child.GetComponent<Emitter>();
             if (emitter != null)
             {
+                emitter.letter.transform.position += new Vector3(emitter.offset.x, emitter.offset.y);
                 emitters.Add(emitter);
             }
         }
@@ -32,9 +33,14 @@ public class SubmarineController : MonoBehaviour
             emitter.enableParticles(!holeCovered);
             if (!holeCovered)
             {
+                emitter.enableLetter();
                 Vector3 force = -emitter.transform.forward.normalized * emitter.emissionForce;
                 rb.AddForceAtPosition(force, emitter.transform.position);
                 //rb.AddForce();
+            }
+            else
+            {
+               emitter.disableLetter();
             }
         }
     }

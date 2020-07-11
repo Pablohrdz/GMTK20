@@ -5,6 +5,8 @@ public class Emitter : MonoBehaviour
 {
     public KeyCode linkedKey;
     public float emissionForce;
+    public Vector2 offset;
+    public GameObject letter;
 
     // this should start out as false if we end up using preset positions for the punctures
     // we can delete it if we don't end up doing that.
@@ -26,4 +28,13 @@ public class Emitter : MonoBehaviour
     {
         linkedKey = keyCode;
     }
+    public void enableLetter()
+    {
+        letter.GetComponent<SpriteRenderer>().enabled = true;
+    }
+    public void disableLetter()
+    {
+        letter.GetComponent<SpriteRenderer>().enabled = false;
+    }
+
 }
