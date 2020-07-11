@@ -8,8 +8,11 @@ public class SubmarineController : MonoBehaviour
     List<Emitter> emitters;
     Rigidbody2D rb;
 
+    private KeyCode[] keyPool;
+
     void Start()
     {
+        keyPool = new KeyCode[] { KeyCode.A, KeyCode.S, KeyCode.D, KeyCode.F};
         rb = GetComponent<Rigidbody2D>();
 
         emitters = new List<Emitter>();
@@ -18,7 +21,7 @@ public class SubmarineController : MonoBehaviour
             Emitter emitter = child.GetComponent<Emitter>();
             if (emitter != null)
             {
-                emitter.letter.transform.position += new Vector3(emitter.offset.x, emitter.offset.y);
+                emitter.letter.transform.position = transform.position + new Vector3(emitter.offset.x, emitter.offset.y);
                 emitters.Add(emitter);
             }
         }
@@ -41,6 +44,10 @@ public class SubmarineController : MonoBehaviour
             {
                emitter.disableLetter();
             }
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            SwapLetters();
         }
     }
 
@@ -66,5 +73,35 @@ public class SubmarineController : MonoBehaviour
             emitter.emissionForce = enemy.emissionForce;
             emitters.Add(emitter.GetComponent<Emitter>());
         }
+    }
+
+    private void SwapLetters()
+    {
+        var letter1 = Random.Range(0,transform.Find("Emitters").childCount);
+        var letter2 = Random.Range(0,transform.Find("Emitters").childCount);
+        while(letter1 == letter2)
+            letter2 = Random.Range(0, transform.Find("Emitters").childCount);
+        //Aqui ya se decidio cuales
+        Emitter em1 = transform.Find("Emitters").GetChild(letter1).GetComponent<Emitter>();
+        KeyCode kc1 = em1.linkedKey;
+        Emitter em2 = transform.Find("Emitters").GetChild(letter2).GetComponent<Emitter>();
+        KeyCode kc2 = em2.linkedKey;
+
+        AssignLeterToEmitter(em1, kc2);
+        AssignLeterToEmitter(em2, kc1);
+
+    }
+
+    private void AssignLeterToEmitter(Emitter emitter, KeyCode kc)
+    {
+        emitter.linkedKey = kc;
+        emitter.letter = GetKeyBox(kc).gameObject;
+        emitter.letter.transform.position = transform.position + new Vector3(emitter.offset.x, emitter.offset.y);
+    }
+
+    private Transform GetKeyBox(KeyCode key)
+    {
+        string name = key.ToString();
+        return transform.Find("Letters").Find(name);
     }
 }
