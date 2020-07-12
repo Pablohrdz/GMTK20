@@ -54,6 +54,11 @@ public class Swordfish : Enemy
         if (!IsChasing)
         {
             IsChasing = true;
+            AudioManager.instance.sendAudioEvent(
+                AudioEvent.Play,
+                this.GetComponent<AudioSource>(),
+                new AudioEventArgs() { sampleId = "swordfish-swim-loop", volume = 0.8f, throttleSeconds = 2.0f }
+            );
 
             // Record original position where the fish was triggered
             LastPlayerTransform = Player;

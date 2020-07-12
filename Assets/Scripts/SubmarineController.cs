@@ -79,7 +79,7 @@ public class SubmarineController : MonoBehaviour
             Swordfish swordfish = collision.gameObject.GetComponent<Swordfish>();
             if (swordfish != null)
             {
-                AudioManager.instance.sendAudioEvent(AudioEvent.Play, enemy.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "swordfish-attack", volume = 0.8f, mixerChannelName = "Fauna" });
+                AudioManager.instance.sendAudioEvent(AudioEvent.Play, enemy.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "swordfish-attack", volume = 1.0f, mixerChannelName = "Fauna" });
                 swordfish.DestroyCrosshair();
             }
 
@@ -145,6 +145,7 @@ public class SubmarineController : MonoBehaviour
 
     private void SwapLetters()
     {
+
         if (transform.Find("Emitters").childCount < 2)
             return;
         var letter1 = Random.Range(0,transform.Find("Emitters").childCount);
@@ -162,5 +163,6 @@ public class SubmarineController : MonoBehaviour
         
         em1.swapLetterWith(em2.transform, kc2);
         em2.swapLetterWith(em1.transform, kc1);
+        AudioManager.instance.sendAudioEvent(AudioEvent.Play, this.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "key-swap", volume = 1.0f, mixerChannelName = "Submarine" });
     }
 }
