@@ -459,7 +459,7 @@ GameObject:
   - component: {fileID: 222212080}
   m_Layer: 0
   m_Name: layout_circle
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1096,7 +1096,7 @@ GameObject:
   - component: {fileID: 312635126}
   m_Layer: 0
   m_Name: layout_straight
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3015,7 +3015,7 @@ GameObject:
   - component: {fileID: 1174388092}
   m_Layer: 0
   m_Name: layout_curve
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3636,7 +3636,7 @@ GameObject:
   - component: {fileID: 1458010549}
   m_Layer: 0
   m_Name: layout_unused
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4766,6 +4766,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SidePanels
+      objectReference: {fileID: 0}
+    - target: {fileID: 3896732771705163882, guid: 2f60566f8a53e8d42bdfeb109b4dbc8a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     - target: {fileID: 3896732771705163883, guid: 2f60566f8a53e8d42bdfeb109b4dbc8a,
         type: 3}

@@ -1605,7 +1605,7 @@ GameObject:
   - component: {fileID: 944825032}
   m_Layer: 0
   m_Name: layout_twisty
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3896,6 +3896,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SidePanels
+      objectReference: {fileID: 0}
+    - target: {fileID: 3896732771705163882, guid: 2f60566f8a53e8d42bdfeb109b4dbc8a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     - target: {fileID: 3896732771705163883, guid: 2f60566f8a53e8d42bdfeb109b4dbc8a,
         type: 3}
