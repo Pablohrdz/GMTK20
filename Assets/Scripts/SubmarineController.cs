@@ -10,11 +10,13 @@ public class SubmarineController : MonoBehaviour
     public List<GameObject> pool;
     public bool HasCollectedPearl;
     public float crashDuration;
+    public bool gameEnded;
 
     List<Emitter> emitters;
     Rigidbody2D rb;
     GamePause gamePause;
     float timeOfCrash;
+    
     bool crashing { get { return Time.time - timeOfCrash < crashDuration; } }
     bool healing;
 
@@ -79,7 +81,13 @@ public class SubmarineController : MonoBehaviour
             foreach (var emitter in emitters)
             {
                 emitter.enableParticles(false);
+
+                AudioManager.instance.sendAudioEvent(AudioEvent.Stop, emitters[0].GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "submarine-bubbles-loop", volume = 1.0f });
+                AudioManager.instance.sendAudioEvent(AudioEvent.Stop, transform.Find("Emitters").GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "air-leak-loop", volume = 1.0f });
+                gameEnded = true;
                 // TODO: dead animation
+
+                StartCoroutine(AudioManager.instance.StartFade("volumeMaster", 13.0f, 0.0f));
             }
         }
         //if (Input.GetKeyDown(KeyCode.O))

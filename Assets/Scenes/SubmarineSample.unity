@@ -929,6 +929,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 902773151, guid: 7a2ce8647e4436744b0138b8e2c21aa0, type: 3}
+      propertyPath: fadeTimeSeconds
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 982380394641062533, guid: 7a2ce8647e4436744b0138b8e2c21aa0,
         type: 3}
       propertyPath: m_Size.x
@@ -1028,6 +1032,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 53.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 7957254212454076014, guid: 7a2ce8647e4436744b0138b8e2c21aa0,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7957254212454076014, guid: 7a2ce8647e4436744b0138b8e2c21aa0,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7957254212454076014, guid: 7a2ce8647e4436744b0138b8e2c21aa0,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a2ce8647e4436744b0138b8e2c21aa0, type: 3}
@@ -1701,6 +1720,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ec40c551d0464f5bb91ac6be84338bf, type: 3}
+--- !u!1 &1755185123 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1547625908, guid: 7a2ce8647e4436744b0138b8e2c21aa0,
+    type: 3}
+  m_PrefabInstance: {fileID: 900662834}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &1755185129
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755185123}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1770657187 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7240408221280034840, guid: d2b28d5a73ee33a4e9ef6906d1dfcf40,
