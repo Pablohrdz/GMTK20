@@ -12,6 +12,7 @@ public class Crab : Enemy
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player").transform;
+        gameObject.transform.Find("Text").GetComponent<TextMesh>().text = linkedKey.ToString();
     }
 
     void Update()
