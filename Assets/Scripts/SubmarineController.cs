@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
-using System.Globalization;
 using UnityEngine;
 
 public class SubmarineController : MonoBehaviour
 {
-    // move emissionForce to each individual emitter and enemy?
+    // Move emissionForce to each individual emitter and enemy?
     public GameObject emitterPrefab;
     public GameObject stampPrefab;
     public float airMax;
@@ -150,7 +149,6 @@ public class SubmarineController : MonoBehaviour
 
         AssignLetterToEmitter(em1, kc2);
         AssignLetterToEmitter(em2, kc1);
-
     }
 
     private void AssignLetterToEmitter(Emitter emitter, KeyCode kc)
