@@ -13,6 +13,7 @@ public class Crab : Enemy
     {
         Player = GameObject.FindGameObjectWithTag("Player").transform;
         gameObject.transform.Find("Text").GetComponent<TextMesh>().text = linkedKey.ToString();
+        gameObject.transform.Find("Text").GetComponent<MeshRenderer>().sortingOrder = 10;
     }
 
     void Update()

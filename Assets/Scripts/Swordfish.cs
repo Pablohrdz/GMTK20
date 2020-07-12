@@ -27,6 +27,7 @@ public class Swordfish : Enemy
         Player = GameObject.FindGameObjectWithTag("Player").transform;
         Renderer = GetComponent<SpriteRenderer>();
         gameObject.transform.Find("Text").GetComponent<TextMesh>().text = linkedKey.ToString();
+        gameObject.transform.Find("Text").GetComponent<MeshRenderer>().sortingOrder = 10;
     }
 
     // Update is called once per frame
