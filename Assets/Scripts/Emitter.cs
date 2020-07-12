@@ -10,10 +10,13 @@ public class Emitter : MonoBehaviour
     public GameObject stampPrefab;
     public bool active = true;
     ParticleSystem particles;
+    public float particleIntensityMultiplier = 30;
 
     private void Start()
     {
         particles = GetComponent<ParticleSystem>();
+        ParticleSystem.EmissionModule emission = particles.emission;
+        emission.rateOverTime = emissionForce * particleIntensityMultiplier;
     }
 
     public void enableParticles(bool enable)
@@ -41,11 +44,11 @@ public class Emitter : MonoBehaviour
         letter.transform.Find("Sticker").GetComponent<SpriteRenderer>().color = color;
     }
 
-    public void swapLetterWith(Transform otherTransform, KeyCode kc)
+    public void swapLetterWith(Transform otherTransform, KeyCode kc, float newForce)
     {
         linkedKey = kc;
+        emissionForce = newForce;
 
-        // TODO: animate
         StartCoroutine(SwapLetterPosition(otherTransform));
     }
 
@@ -73,5 +76,6 @@ public class Emitter : MonoBehaviour
             Quaternion.identity,
             transform);
         letter.transform.Find("Text").GetComponent<TextMesh>().text = linkedKey.ToString();
+        //letter.transform.Find("Text").GetComponent<MeshRenderer>().sortingOrder = 10;
     }
 }

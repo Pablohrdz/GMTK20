@@ -10,15 +10,21 @@ public class SubmarineController : MonoBehaviour
     public List<GameObject> pool;
     public bool HasCollectedPearl;
     public float crashDuration;
+    public bool gameEnded;
 
     List<Emitter> emitters;
     Rigidbody2D rb;
+    GamePause gamePause;
     float timeOfCrash;
+    
     bool crashing { get { return Time.time - timeOfCrash < crashDuration; } }
+    bool healing;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        gamePause =  GameObject.FindWithTag("GameController").GetComponent<GamePause>();
 
         emitters = new List<Emitter>();
         foreach(Transform child in transform.Find("Emitters"))
@@ -34,6 +40,7 @@ public class SubmarineController : MonoBehaviour
 
     void Update()
     {
+        var uncoveredNumber = 0;
         if (air >= 0)
         {
             foreach (var emitter in emitters)
@@ -42,6 +49,8 @@ public class SubmarineController : MonoBehaviour
                 emitter.enableParticles(holeUncovered);
                 if (holeUncovered)
                 {
+                    uncoveredNumber += 1;
+                    // To avoid stacking crashes
                     emitter.disableLetter();
                     Vector3 force = -emitter.transform.forward.normalized * emitter.emissionForce;
                     rb.AddForceAtPosition(force, emitter.transform.position);
@@ -50,6 +59,22 @@ public class SubmarineController : MonoBehaviour
                 else
                 {
                     emitter.enableLetter();
+                    // AudioManager.instance.sendAudioEvent(AudioEvent.Play, transform.Find("Emitters").GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "air-leak-fix", volume = 1.0f, mixerChannelName = "Leaks" });
+                }
+            }
+            if (uncoveredNumber > 0)
+            {
+                // Debug.Log("Playing leak");
+                //  0.4f + (uncoveredNumber/(emitters.Count+0.0f))*0.6f
+                AudioManager.instance.sendAudioEvent(AudioEvent.Play, transform.Find("Emitters").GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "air-leak-loop", volume =(uncoveredNumber / (emitters.Count + 0.0f)), mixerChannelName = "Leaks", loop=true });
+                AudioManager.instance.sendAudioEvent(AudioEvent.Play, emitters[0].GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "submarine-bubbles-loop", volume =  0.2f + (uncoveredNumber / (emitters.Count + 0.0f)) * 0.8f , mixerChannelName = "Leaks", loop = true });
+            }
+            else
+            {
+                if (emitters.Count > 0)
+                {
+                    AudioManager.instance.sendAudioEvent(AudioEvent.Stop, emitters[0].GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "submarine-bubbles-loop", volume = 1.0f });
+                    AudioManager.instance.sendAudioEvent(AudioEvent.Stop, transform.Find("Emitters").GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "air-leak-loop", volume = 1.0f });
                 }
             }
         }
@@ -58,12 +83,36 @@ public class SubmarineController : MonoBehaviour
             foreach (var emitter in emitters)
             {
                 emitter.enableParticles(false);
+
+                AudioManager.instance.sendAudioEvent(AudioEvent.Stop, emitters[0].GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "submarine-bubbles-loop", volume = 1.0f });
+                AudioManager.instance.sendAudioEvent(AudioEvent.Stop, transform.Find("Emitters").GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "air-leak-loop", volume = 1.0f });
+                gameEnded = true;
                 // TODO: dead animation
+
+                StartCoroutine(AudioManager.instance.StartFade("volumeMaster", 13.0f, 0.0f));
             }
         }
-        if (Input.GetKeyDown(KeyCode.O))
+        //if (Input.GetKeyDown(KeyCode.O))
+        //{
+        //    SwapLetters();
+        //}
+
+        if (healing)
         {
-            SwapLetters();
+            foreach (var emitter in emitters)
+            {
+                bool selectedToHeal = Input.GetKeyDown(emitter.linkedKey);
+
+                if (selectedToHeal)
+                {
+                    // TODO: sound
+                    emitters.Remove(emitter);
+                    GameObject.Destroy(emitter.gameObject);
+                    healing = false;
+                    gamePause.Healing(false);
+                    break;
+                }
+            }
         }
     }
 
@@ -72,12 +121,16 @@ public class SubmarineController : MonoBehaviour
         var enemy = collision.gameObject.GetComponent<Enemy>();
         if (enemy != null)
         {
-            AudioManager.instance.sendAudioEvent(AudioEvent.Play, this.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "swordfish-submarine-collision", volume = 0.7f, mixerChannelName = "Submarine" });
+            AudioManager.instance.sendAudioEvent(AudioEvent.Play, this.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "swordfish-submarine-collision", volume = 0.9f, mixerChannelName = "Submarine" });
             Swordfish swordfish = collision.gameObject.GetComponent<Swordfish>();
             if (swordfish != null)
             {
-                AudioManager.instance.sendAudioEvent(AudioEvent.Play, enemy.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "swordfish-attack", volume = 1.0f, mixerChannelName = "Fauna" });
+                AudioManager.instance.sendAudioEvent(AudioEvent.Play, this.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "swordfish-attack", volume = 1.0f, mixerChannelName = "Fauna" });
                 swordfish.DestroyCrosshair();
+            }
+            else
+            {
+                AudioManager.instance.sendAudioEvent(AudioEvent.Play, this.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "crab-hit", volume = 1.0f, mixerChannelName = "Fauna" });
             }
 
             Destroy(collision.gameObject); // TODO: animate, remember to disable collider while it fades
@@ -117,17 +170,6 @@ public class SubmarineController : MonoBehaviour
             }
             CameraShake.Instance.ShakeCamera(10.0f, 0.3f /* secs */);
         }
-
-        if (collision.gameObject.tag == "Wrench")
-        {
-            AudioManager.instance.sendAudioEvent(AudioEvent.Play, this.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "submarine-crash", volume = 0.7f, mixerChannelName = "Submarine", throttleSeconds = 0.2f });
-            // To avoid stacking crashes
-            if (!crashing)
-            {
-                timeOfCrash = Time.time;
-            }
-            CameraShake.Instance.ShakeCamera(10.0f, 0.3f /* secs */);
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -148,11 +190,24 @@ public class SubmarineController : MonoBehaviour
                 air = airMax;
             }
         }
+
+        if (collision.gameObject.tag == "Wrench")
+        {
+            // TODO: better audio
+            AudioManager.instance.sendAudioEvent(AudioEvent.Play, this.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "repair", volume = 0.7f, mixerChannelName = "Submarine", throttleSeconds = 0.2f });
+
+            if (emitters.Count > 1)
+            {
+                // TODO: animate
+                GameObject.Destroy(collision.gameObject);
+                gamePause.Healing(true);
+                healing = true;
+            }
+        }
     }
 
     private void SwapLetters()
     {
-
         if (emitters.Count < 2)
             return;
         var letter1 = Random.Range(0, emitters.Count);
@@ -165,11 +220,13 @@ public class SubmarineController : MonoBehaviour
         //Aqui ya se decidio cuales
         Emitter em1 = emitters[letter1].GetComponent<Emitter>();
         KeyCode kc1 = em1.linkedKey;
+        float ef1 = em1.emissionForce;
         Emitter em2 = emitters[letter2].GetComponent<Emitter>();
         KeyCode kc2 = em2.linkedKey;
-        
-        em1.swapLetterWith(em2.transform, kc2);
-        em2.swapLetterWith(em1.transform, kc1);
+        float ef2 = em2.emissionForce;
+
+        em1.swapLetterWith(em2.transform, kc2, ef2);
+        em2.swapLetterWith(em1.transform, kc1, ef1);
         AudioManager.instance.sendAudioEvent(AudioEvent.Play, this.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "key-swap", volume = 1.0f, mixerChannelName = "Submarine" });
     }
 }

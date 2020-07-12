@@ -19,6 +19,7 @@ public class AudioEventArgs
     public float delaySeconds = 0.0f;
     public string mixerChannelName = "FX";
     public float throttleSeconds = 0.0f;
+    public bool restart = false;
 }
 
 public interface Sample
@@ -31,7 +32,7 @@ public class RandomSampleVariation : Sample
 {
     public List<AudioClip> clips;
     private bool playing = false;
-    private bool restoreState = false;
+    private bool dfdfdfrestoreState = false;
     private Dictionary<string, AudioSource> previousSourceStates = new Dictionary<string, AudioSource>();
     // private AudioSource currentSource;
 
@@ -44,14 +45,18 @@ public class RandomSampleVariation : Sample
         {
             // TODO to save previous states
             // var previousSourceState = UnityEngine.Object.Instantiate(source);
-            source.Stop();
-            restoreState = true;
+            if (args.restart || !source.isPlaying)
+            {
 
-            source.loop = args.loop;
-            source.clip = clip;
-            source.volume = args.volume;
-            source.outputAudioMixerGroup = mixerGroup;
-            source.PlayDelayed(args.delaySeconds);
+              
+                source.Stop();
+
+                source.loop = args.loop;
+                source.clip = clip;
+                source.volume = args.volume;
+                source.outputAudioMixerGroup = mixerGroup;
+                source.PlayDelayed(args.delaySeconds);
+            }
         }
         else
         {
@@ -67,7 +72,9 @@ public class RandomSampleVariation : Sample
             
             var previousSourceState = previousSourceStates[args.sampleId];
             previousSourceState.Stop();
-            previousSourceState.clip = previousSourceState.clip;
+            // previousSourceState.clip = previousSourceState.clip;
+            previousSourceState.volume = args.volume;
+            previousSourceState.loop = false;
             // currentSource.loop = previousSourceState.loop;
             // currentSource.clip = previousSourceState.clip;
             // currentSource.volume = previousSourceState.volume;
@@ -112,7 +119,7 @@ public class AudioManager : MonoBehaviour
 
     public AudioClip[] clips;
     private Dictionary<string, Sample> samples;
-    private float throttleTimer = 0.0f;
+    private Dictionary<string, float> throttleTimers = new Dictionary<string, float>();
     // pseudo singleton, without all the problems
     public static AudioManager instance
     {
@@ -141,11 +148,11 @@ public class AudioManager : MonoBehaviour
                     case AudioEvent.Play:
                         var time = Time.time;
                        
-                        if (time - throttleTimer < args.throttleSeconds)
+                        if (time - throttleTimers[args.sampleId] < args.throttleSeconds)
                         {
                             break;
                         }
-                        throttleTimer = time;
+                        throttleTimers[args.sampleId] = time;
                         if (args.delaySeconds > 0.0)
                         {
                             StartCoroutine(delayedFunc(() => sample.play(source, mixerGroup, args), args.delaySeconds));
@@ -172,7 +179,7 @@ public class AudioManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        throttleTimer = Time.time;
+        var time = Time.time;
         Regex rx = new Regex(@"(.*)[\-]([0-9]+)$",
           RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
@@ -188,11 +195,13 @@ public class AudioManager : MonoBehaviour
                 // var index = match.Groups[2];
                 // Debug.Log("MATCH " + key);
                 dict.AddOrUpdate(key, clip);
+                throttleTimers.AddOrUpdate(key, time);
             }
             else
             {
                 // Debug.LogError("Malformed audio clip name: \"" + clip.name + "\"");
                 dict.AddOrUpdate(clip.name, clip);
+                throttleTimers.AddOrUpdate(clip.name, time);
             }
         }
 
@@ -225,6 +234,24 @@ public class AudioManager : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTimeSeconds);
         func();
+    }
+
+    public IEnumerator StartFade(string exposedParam, float duration, float targetVolume)
+    {
+        float currentTime = 0;
+        float currentVol;
+        mixer.GetFloat(exposedParam, out currentVol);
+        currentVol = Mathf.Pow(10, currentVol / 20);
+        float targetValue = Mathf.Clamp(targetVolume, 0.0001f, 1);
+
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            float newVol = Mathf.Lerp(currentVol, targetValue, currentTime / duration);
+            mixer.SetFloat(exposedParam, Mathf.Log10(newVol) * 20);
+            yield return null;
+        }
+        yield break;
     }
 }
 
