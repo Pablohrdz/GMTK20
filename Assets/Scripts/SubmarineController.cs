@@ -3,9 +3,7 @@ using UnityEngine;
 
 public class SubmarineController : MonoBehaviour
 {
-    // Move emissionForce to each individual emitter and enemy?
     public GameObject emitterPrefab;
-    //public GameObject stampPrefab;
     public float airMax;
     public float air;
     public float airLossMultiplier;
@@ -74,7 +72,6 @@ public class SubmarineController : MonoBehaviour
         var enemy = collision.gameObject.GetComponent<Enemy>();
         if (enemy != null)
         {
-
             AudioManager.instance.sendAudioEvent(AudioEvent.Play, this.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "swordfish-submarine-collision", volume = 0.7f, mixerChannelName = "Submarine" });
             Swordfish swordfish = collision.gameObject.GetComponent<Swordfish>();
             if (swordfish != null)
@@ -85,7 +82,6 @@ public class SubmarineController : MonoBehaviour
 
             Destroy(collision.gameObject); // TODO: animate, remember to disable collider while it fades
 
-            // TODO: there should only be one hit, but we should double check...
             ContactPoint2D contact = collision.contacts[0];
 
             Debug.DrawRay(contact.point, contact.normal, Color.green, 2, false);
@@ -121,6 +117,17 @@ public class SubmarineController : MonoBehaviour
             }
             CameraShake.Instance.ShakeCamera(10.0f, 0.3f /* secs */);
         }
+
+        if (collision.gameObject.tag == "Wrench")
+        {
+            AudioManager.instance.sendAudioEvent(AudioEvent.Play, this.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "submarine-crash", volume = 0.7f, mixerChannelName = "Submarine", throttleSeconds = 0.2f });
+            // To avoid stacking crashes
+            if (!crashing)
+            {
+                timeOfCrash = Time.time;
+            }
+            CameraShake.Instance.ShakeCamera(10.0f, 0.3f /* secs */);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -146,19 +153,19 @@ public class SubmarineController : MonoBehaviour
     private void SwapLetters()
     {
 
-        if (transform.Find("Emitters").childCount < 2)
+        if (emitters.Count < 2)
             return;
-        var letter1 = Random.Range(0,transform.Find("Emitters").childCount);
-        var letter2 = Random.Range(0,transform.Find("Emitters").childCount);
+        var letter1 = Random.Range(0, emitters.Count);
+        var letter2 = Random.Range(0, emitters.Count);
 
         while (letter1 == letter2)
         {
-            letter2 = Random.Range(0, transform.Find("Emitters").childCount);
+            letter2 = Random.Range(0, emitters.Count);
         }
         //Aqui ya se decidio cuales
-        Emitter em1 = transform.Find("Emitters").GetChild(letter1).GetComponent<Emitter>();
+        Emitter em1 = emitters[letter1].GetComponent<Emitter>();
         KeyCode kc1 = em1.linkedKey;
-        Emitter em2 = transform.Find("Emitters").GetChild(letter2).GetComponent<Emitter>();
+        Emitter em2 = emitters[letter2].GetComponent<Emitter>();
         KeyCode kc2 = em2.linkedKey;
         
         em1.swapLetterWith(em2.transform, kc2);
