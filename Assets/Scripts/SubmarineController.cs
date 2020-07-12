@@ -71,9 +71,11 @@ public class SubmarineController : MonoBehaviour
             }
             else
             {
-                AudioManager.instance.sendAudioEvent(AudioEvent.Stop, emitters[0].GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "submarine-bubbles-loop", volume = 1.0f});
-                AudioManager.instance.sendAudioEvent(AudioEvent.Stop, transform.Find("Emitters").GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "air-leak-loop", volume = 1.0f });
-                
+                if (emitters.Count > 0)
+                {
+                    AudioManager.instance.sendAudioEvent(AudioEvent.Stop, emitters[0].GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "submarine-bubbles-loop", volume = 1.0f });
+                    AudioManager.instance.sendAudioEvent(AudioEvent.Stop, transform.Find("Emitters").GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "air-leak-loop", volume = 1.0f });
+                }
             }
         }
         else
