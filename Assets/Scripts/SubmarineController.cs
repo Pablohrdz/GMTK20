@@ -149,7 +149,7 @@ public class SubmarineController : MonoBehaviour
             emitter.InstantiateLetter();
             emitter.enableLetter();
             emitters.Add(emitter);
-            StartCoroutine(enemy.FadeOut());
+            StartCoroutine(enemy.FadeOut(emitter.transform));
         }
 
         var swapper = collision.gameObject.GetComponent<Swapper>();
