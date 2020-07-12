@@ -4768,6 +4768,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedKey: 97
-  emissionForce: 5
+  emissionForce: 1
   letter: {fileID: 0}
   active: 1
