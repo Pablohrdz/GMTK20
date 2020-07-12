@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 11
   m_Sprite: {fileID: 21300000, guid: 293df82f4b418461e8f82da8fd8212ff, type: 3}
-  m_Color: {r: 0.51584196, g: 0.5283019, b: 0.5262252, a: 1}
+  m_Color: {r: 0.69166076, g: 0.9339623, b: 0.85319513, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -129,6 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   airBar: {fileID: 3168444391827976275}
   submarineGO: {fileID: 0}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &6885392618252194374
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,7 +232,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 8
   m_Sprite: {fileID: 21300000, guid: 293df82f4b418461e8f82da8fd8212ff, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -312,7 +313,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 293df82f4b418461e8f82da8fd8212ff, type: 3}
-  m_Color: {r: 0, g: 0.06452833, b: 0.3584906, a: 1}
+  m_Color: {r: 0.0501513, g: 0.21698111, b: 0.18361515, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
