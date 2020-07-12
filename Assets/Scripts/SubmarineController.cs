@@ -7,6 +7,9 @@ public class SubmarineController : MonoBehaviour
     // move emissionForce to each individual emitter and enemy?
     public GameObject emitterPrefab;
     public GameObject stampPrefab;
+    public float airMax;
+    public float air;
+    public float airLossMultiplier;
     List<Emitter> emitters;
     Rigidbody2D rb;
     public List<GameObject> pool;
@@ -31,20 +34,32 @@ public class SubmarineController : MonoBehaviour
 
     void Update()
     {
-        foreach (var emitter in emitters)
+        if (air >= 0)
         {
-            if (!emitter.active) { continue; }
-            bool holeCovered = Input.GetKey(emitter.linkedKey);
-            emitter.enableParticles(!holeCovered);
-            if (!holeCovered)
+            foreach (var emitter in emitters)
             {
-                emitter.disableLetter();
-                Vector3 force = -emitter.transform.forward.normalized * emitter.emissionForce;
-                rb.AddForceAtPosition(force, emitter.transform.position);
+                if (!emitter.active) { continue; }
+                bool holeCovered = Input.GetKey(emitter.linkedKey);
+                emitter.enableParticles(!holeCovered);
+                if (!holeCovered)
+                {
+                    emitter.disableLetter();
+                    Vector3 force = -emitter.transform.forward.normalized * emitter.emissionForce;
+                    rb.AddForceAtPosition(force, emitter.transform.position);
+                    air -= emitter.emissionForce * airLossMultiplier;
+                }
+                else
+                {
+                    emitter.enableLetter();
+                }
             }
-            else
+        }
+        else
+        {
+            foreach (var emitter in emitters)
             {
-               emitter.enableLetter();
+                emitter.enableParticles(false);
+                // TODO: dead animation
             }
         }
         if (Input.GetKeyDown(KeyCode.O))
@@ -77,6 +92,7 @@ public class SubmarineController : MonoBehaviour
             emitter.enableLetter();
             emitters.Add(emitter.GetComponent<Emitter>());
         }
+
         var swapper = collision.gameObject.GetComponent<Swapper>();
         if (swapper != null)
         {
@@ -88,6 +104,20 @@ public class SubmarineController : MonoBehaviour
         if (collision.gameObject.tag == "Environment")
         {
             CameraShake.Instance.ShakeCamera(10.0f, 0.3f /* secs */);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        var airPocket = collision.gameObject.GetComponent<AirPocket>();
+        if (airPocket != null)
+        {
+            Destroy(collision.gameObject); // TODO: animate, remember to disable collider while it fades
+            air += airPocket.air;
+            if (air > airMax)
+            {
+                air = airMax;
+            }
         }
     }
 
