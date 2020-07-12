@@ -194,7 +194,6 @@ public class SubmarineController : MonoBehaviour
 
     private void SwapLetters()
     {
-
         if (emitters.Count < 2)
             return;
         var letter1 = Random.Range(0, emitters.Count);
@@ -207,11 +206,13 @@ public class SubmarineController : MonoBehaviour
         //Aqui ya se decidio cuales
         Emitter em1 = emitters[letter1].GetComponent<Emitter>();
         KeyCode kc1 = em1.linkedKey;
+        float ef1 = em1.emissionForce;
         Emitter em2 = emitters[letter2].GetComponent<Emitter>();
         KeyCode kc2 = em2.linkedKey;
-        
-        em1.swapLetterWith(em2.transform, kc2);
-        em2.swapLetterWith(em1.transform, kc1);
+        float ef2 = em2.emissionForce;
+
+        em1.swapLetterWith(em2.transform, kc2, ef2);
+        em2.swapLetterWith(em1.transform, kc1, ef1);
         AudioManager.instance.sendAudioEvent(AudioEvent.Play, this.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "key-swap", volume = 1.0f, mixerChannelName = "Submarine" });
     }
 }
