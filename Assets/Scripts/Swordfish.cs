@@ -26,6 +26,7 @@ public class Swordfish : Enemy
     {
         Player = GameObject.FindGameObjectWithTag("Player").transform;
         Renderer = GetComponent<SpriteRenderer>();
+        gameObject.transform.Find("Text").GetComponent<TextMesh>().text = linkedKey.ToString();
     }
 
     // Update is called once per frame
@@ -64,7 +65,7 @@ public class Swordfish : Enemy
             Renderer.material.color = Color.red;
 
             // Look at target
-            transform.right = LastPlayerTransform.position - transform.position;
+            transform.right = transform.position - LastPlayerTransform.position;
 
             // Wait in order to telegraph action
             yield return new WaitForSeconds(TelegraphDuration);
