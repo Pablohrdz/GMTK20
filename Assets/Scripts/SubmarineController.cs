@@ -100,7 +100,7 @@ public class SubmarineController : MonoBehaviour
             emitter.emissionForce = enemy.emissionForce;
             emitter.InstantiateLetter();
             emitter.enableLetter();
-            emitters.Add(emitter); // TODO: no necesitamos getcomponent o si? Lo dejo en lo que termino de refactorizar todo el resto del codigo
+            emitters.Add(emitter);
         }
 
         var swapper = collision.gameObject.GetComponent<Swapper>();
