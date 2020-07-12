@@ -3,9 +3,7 @@ using UnityEngine;
 
 public class SubmarineController : MonoBehaviour
 {
-    // Move emissionForce to each individual emitter and enemy?
     public GameObject emitterPrefab;
-    //public GameObject stampPrefab;
     public float airMax;
     public float air;
     public float airLossMultiplier;
@@ -74,7 +72,6 @@ public class SubmarineController : MonoBehaviour
         var enemy = collision.gameObject.GetComponent<Enemy>();
         if (enemy != null)
         {
-
             AudioManager.instance.sendAudioEvent(AudioEvent.Play, this.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "swordfish-submarine-collision", volume = 0.7f, mixerChannelName = "Submarine" });
             Swordfish swordfish = collision.gameObject.GetComponent<Swordfish>();
             if (swordfish != null)
@@ -85,7 +82,6 @@ public class SubmarineController : MonoBehaviour
 
             Destroy(collision.gameObject); // TODO: animate, remember to disable collider while it fades
 
-            // TODO: there should only be one hit, but we should double check...
             ContactPoint2D contact = collision.contacts[0];
 
             Debug.DrawRay(contact.point, contact.normal, Color.green, 2, false);
@@ -114,6 +110,17 @@ public class SubmarineController : MonoBehaviour
         if (collision.gameObject.tag == "Environment")
         {
             AudioManager.instance.sendAudioEvent(AudioEvent.Play, this.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "submarine-crash", volume = 0.7f, mixerChannelName = "Submarine", throttleSeconds=0.2f });
+            // To avoid stacking crashes
+            if (!crashing)
+            {
+                timeOfCrash = Time.time;
+            }
+            CameraShake.Instance.ShakeCamera(10.0f, 0.3f /* secs */);
+        }
+
+        if (collision.gameObject.tag == "Wrench")
+        {
+            AudioManager.instance.sendAudioEvent(AudioEvent.Play, this.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "submarine-crash", volume = 0.7f, mixerChannelName = "Submarine", throttleSeconds = 0.2f });
             // To avoid stacking crashes
             if (!crashing)
             {
