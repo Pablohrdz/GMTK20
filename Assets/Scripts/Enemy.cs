@@ -18,18 +18,15 @@ public class Enemy : MonoBehaviour
             collider.enabled = false;
             var step = .1f;
             var delta = .05f;
-            if (otherTransform != null)
-            {
-                var letter = this.transform.Find("Text");
-                while ((letter.transform.position - otherTransform.position).sqrMagnitude > 0.01f)
-                {
-                    letter.transform.position = Vector3.Lerp(
-                        letter.transform.position, otherTransform.position, 3 * Time.deltaTime);
-                    yield return null;
-                }
-            }
             for (float f = 1; f >= 0; f -= step)
             {
+                if (otherTransform != null)
+                {
+                    var letter = this.transform.Find("Text");
+
+                    letter.transform.position = Vector3.Lerp(
+                            letter.transform.position, otherTransform.position, 2 * Time.deltaTime);
+                }
                 var rendT = this.transform.Find("Text").GetComponent<MeshRenderer>();
                 Color cT = rendT.material.color;
                 cT.a = f;
