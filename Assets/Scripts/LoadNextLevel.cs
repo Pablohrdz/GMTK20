@@ -17,4 +17,9 @@ public class LoadNextLevel : MonoBehaviour
             LoadNextScene();
         }
     }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }
