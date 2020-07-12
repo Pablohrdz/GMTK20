@@ -46,7 +46,7 @@ public class Swapper : MonoBehaviour
             LastPlayerTransform = Player;
 
 
-            Renderer.material.color = Color.magenta;
+            //Renderer.material.color = Color.magenta;
             // Look at target
             transform.up = transform.position - LastPlayerTransform.position;
 
