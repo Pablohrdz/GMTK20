@@ -1,16 +1,22 @@
 ﻿using System.Collections.Generic;
-using System.Globalization;
 using UnityEngine;
 
 public class SubmarineController : MonoBehaviour
 {
-    // move emissionForce to each individual emitter and enemy?
+    // Move emissionForce to each individual emitter and enemy?
     public GameObject emitterPrefab;
     public GameObject stampPrefab;
-    List<Emitter> emitters;
-    Rigidbody2D rb;
+    public float airMax;
+    public float air;
+    public float airLossMultiplier;
     public List<GameObject> pool;
     public bool HasCollectedPearl;
+    public float crashDuration;
+
+    List<Emitter> emitters;
+    Rigidbody2D rb;
+    float timeOfCrash;
+    bool crashing { get { return Time.time - timeOfCrash < crashDuration; } }
 
     void Start()
     {
@@ -24,27 +30,37 @@ public class SubmarineController : MonoBehaviour
             {
                 emitter.letter = InstantiateLetter(emitter);
                 emitters.Add(emitter);
-
             }
         }
     }
 
     void Update()
     {
-        foreach (var emitter in emitters)
+        if (air >= 0)
         {
-            if (!emitter.active) { continue; }
-            bool holeCovered = Input.GetKey(emitter.linkedKey);
-            emitter.enableParticles(!holeCovered);
-            if (!holeCovered)
+            foreach (var emitter in emitters)
             {
-                emitter.disableLetter();
-                Vector3 force = -emitter.transform.forward.normalized * emitter.emissionForce;
-                rb.AddForceAtPosition(force, emitter.transform.position);
+                bool holeUncovered = !Input.GetKey(emitter.linkedKey) || crashing;
+                emitter.enableParticles(holeUncovered);
+                if (holeUncovered)
+                {
+                    emitter.disableLetter();
+                    Vector3 force = -emitter.transform.forward.normalized * emitter.emissionForce;
+                    rb.AddForceAtPosition(force, emitter.transform.position);
+                    air -= emitter.emissionForce * airLossMultiplier;
+                }
+                else
+                {
+                    emitter.enableLetter();
+                }
             }
-            else
+        }
+        else
+        {
+            foreach (var emitter in emitters)
             {
-               emitter.enableLetter();
+                emitter.enableParticles(false);
+                // TODO: dead animation
             }
         }
         if (Input.GetKeyDown(KeyCode.O))
@@ -77,6 +93,7 @@ public class SubmarineController : MonoBehaviour
             emitter.enableLetter();
             emitters.Add(emitter.GetComponent<Emitter>());
         }
+
         var swapper = collision.gameObject.GetComponent<Swapper>();
         if (swapper != null)
         {
@@ -87,7 +104,26 @@ public class SubmarineController : MonoBehaviour
         // Check for collisions with the environment to shake the camera.
         if (collision.gameObject.tag == "Environment")
         {
+            // To avoid stacking crashes
+            if (!crashing)
+            {
+                timeOfCrash = Time.time;
+            }
             CameraShake.Instance.ShakeCamera(10.0f, 0.3f /* secs */);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        var airPocket = collision.gameObject.GetComponent<AirPocket>();
+        if (airPocket != null)
+        {
+            Destroy(collision.gameObject); // TODO: animate, remember to disable collider while it fades
+            air += airPocket.air;
+            if (air > airMax)
+            {
+                air = airMax;
+            }
         }
     }
 
@@ -120,7 +156,6 @@ public class SubmarineController : MonoBehaviour
 
         AssignLetterToEmitter(em1, kc2);
         AssignLetterToEmitter(em2, kc1);
-
     }
 
     private void AssignLetterToEmitter(Emitter emitter, KeyCode kc)
@@ -129,5 +164,4 @@ public class SubmarineController : MonoBehaviour
         Object.Destroy(emitter.letter);
         emitter.letter = InstantiateLetter(emitter);
     }
-
 }

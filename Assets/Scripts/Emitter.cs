@@ -7,9 +7,6 @@ public class Emitter : MonoBehaviour
     public float emissionForce;
     public GameObject letter;
 
-    // this should start out as false if we end up using preset positions for the punctures
-    // we can delete it if we don't end up doing that.
-    public bool active = true;
     ParticleSystem particles;
 
     private void Start()
