@@ -5,7 +5,7 @@ public class SubmarineController : MonoBehaviour
 {
     // Move emissionForce to each individual emitter and enemy?
     public GameObject emitterPrefab;
-    public GameObject stampPrefab;
+    //public GameObject stampPrefab;
     public float airMax;
     public float air;
     public float airLossMultiplier;
@@ -28,7 +28,7 @@ public class SubmarineController : MonoBehaviour
             Emitter emitter = child.GetComponent<Emitter>();
             if (emitter != null)
             {
-                emitter.letter = InstantiateLetter(emitter);
+                emitter.InstantiateLetter();
                 emitters.Add(emitter);
             }
         }
@@ -40,7 +40,7 @@ public class SubmarineController : MonoBehaviour
         {
             foreach (var emitter in emitters)
             {
-                bool holeUncovered = !Input.GetKey(emitter.linkedKey) || crashing;
+                bool holeUncovered = emitter.active && (!Input.GetKey(emitter.linkedKey) || crashing);
                 emitter.enableParticles(holeUncovered);
                 if (holeUncovered)
                 {
@@ -95,9 +95,9 @@ public class SubmarineController : MonoBehaviour
             Emitter emitter = emitterGO.GetComponent<Emitter>();
             emitter.setLinkedKey(collision.gameObject.GetComponent<Enemy>().linkedKey);
             emitter.emissionForce = enemy.emissionForce;
-            emitter.letter = InstantiateLetter(emitter);
+            emitter.InstantiateLetter();
             emitter.enableLetter();
-            emitters.Add(emitter.GetComponent<Emitter>());
+            emitters.Add(emitter); // TODO: no necesitamos getcomponent o si? Lo dejo en lo que termino de refactorizar todo el resto del codigo
         }
 
         var swapper = collision.gameObject.GetComponent<Swapper>();
@@ -133,18 +133,18 @@ public class SubmarineController : MonoBehaviour
         }
     }
 
-    private GameObject InstantiateLetter(Emitter emitter)
-    {
-        if (stampPrefab == null)
-            throw new System.Exception("missing stamp prefab");
-        GameObject letter = Instantiate(
-            stampPrefab,
-            new Vector3(emitter.transform.position.x, emitter.transform.position.y, 0),
-            Quaternion.identity,
-            transform.Find("Letters"));
-        letter.transform.Find("Text").GetComponent<TextMesh>().text = emitter.linkedKey.ToString();
-        return letter;
-    }
+    //private GameObject InstantiateLetter(Emitter emitter)
+    //{
+    //    if (stampPrefab == null)
+    //        throw new System.Exception("missing stamp prefab");
+    //    GameObject letter = Instantiate(
+    //        stampPrefab,
+    //        new Vector3(emitter.transform.position.x, emitter.transform.position.y, 0),
+    //        Quaternion.identity,
+    //        transform.Find("Letters"));
+    //    letter.transform.Find("Text").GetComponent<TextMesh>().text = emitter.linkedKey.ToString();
+    //    return letter;
+    //}
 
     private void SwapLetters()
     {
@@ -152,22 +152,25 @@ public class SubmarineController : MonoBehaviour
             return;
         var letter1 = Random.Range(0,transform.Find("Emitters").childCount);
         var letter2 = Random.Range(0,transform.Find("Emitters").childCount);
-        while(letter1 == letter2)
+
+        while (letter1 == letter2)
+        {
             letter2 = Random.Range(0, transform.Find("Emitters").childCount);
+        }
         //Aqui ya se decidio cuales
         Emitter em1 = transform.Find("Emitters").GetChild(letter1).GetComponent<Emitter>();
         KeyCode kc1 = em1.linkedKey;
         Emitter em2 = transform.Find("Emitters").GetChild(letter2).GetComponent<Emitter>();
         KeyCode kc2 = em2.linkedKey;
-
-        AssignLetterToEmitter(em1, kc2);
-        AssignLetterToEmitter(em2, kc1);
+        
+        em1.swapLetterWith(em2.transform, kc2);
+        em2.swapLetterWith(em1.transform, kc1);
     }
 
-    private void AssignLetterToEmitter(Emitter emitter, KeyCode kc)
-    {
-        emitter.linkedKey = kc;
-        Object.Destroy(emitter.letter);
-        emitter.letter = InstantiateLetter(emitter);
-    }
+    //private void AssignLetterToEmitter(Emitter emitter, KeyCode kc)
+    //{
+    //    emitter.linkedKey = kc;
+    //    Object.Destroy(emitter.letter);
+    //    emitter.letter = InstantiateLetter(emitter);
+    //}
 }
