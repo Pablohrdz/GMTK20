@@ -41,11 +41,11 @@ public class Emitter : MonoBehaviour
         letter.transform.Find("Sticker").GetComponent<SpriteRenderer>().color = color;
     }
 
-    public void swapLetterWith(Transform otherTransform, KeyCode kc)
+    public void swapLetterWith(Transform otherTransform, KeyCode kc, float newForce)
     {
         linkedKey = kc;
+        emissionForce = newForce;
 
-        // TODO: animate
         StartCoroutine(SwapLetterPosition(otherTransform));
     }
 
