@@ -3471,12 +3471,12 @@ PrefabInstance:
     - target: {fileID: 1539043242228730227, guid: 39e948bd4716e4cb498fa5de9e81497c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 378.76
+      value: 379
       objectReference: {fileID: 0}
     - target: {fileID: 1539043242228730227, guid: 39e948bd4716e4cb498fa5de9e81497c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 83.78
+      value: 83.4
       objectReference: {fileID: 0}
     - target: {fileID: 1539043242228730227, guid: 39e948bd4716e4cb498fa5de9e81497c,
         type: 3}
@@ -4685,7 +4685,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0.05
   m_AngularDrag: 5
-  m_GravityScale: 0.02
+  m_GravityScale: 0.05
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
