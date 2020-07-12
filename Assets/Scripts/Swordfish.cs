@@ -61,10 +61,10 @@ public class Swordfish : Enemy
             InstancedCrosshair = Instantiate(CrosshairPrefab, LastPlayerTransform.position, Quaternion.identity);
 
             // Change color
-            Renderer.material.color = Color.red;
+            //Renderer.material.color = Color.red;
 
             // Look at target
-            transform.right = LastPlayerTransform.position - transform.position;
+            transform.right = transform.position - LastPlayerTransform.position;
 
             // Wait in order to telegraph action
             yield return new WaitForSeconds(TelegraphDuration);

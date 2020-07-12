@@ -10,9 +10,13 @@ public class GamePause : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            gamePaused = !gamePaused;
-
-            Time.timeScale = gamePaused ? 0 : 1;
+            PauseGame();
         }
+    }
+
+    void PauseGame()
+    {
+        gamePaused = !gamePaused;
+        Time.timeScale = gamePaused ? 0 : 1;
     }
 }
