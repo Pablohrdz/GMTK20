@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedKey: 0
-  emissionForce: 0
+  emissionForce: 1
   Speed: 3
   DetectionRadius: 15
   TelegraphDuration: 2
