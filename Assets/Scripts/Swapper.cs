@@ -33,7 +33,7 @@ public class Swapper : MonoBehaviour
         {
             IsChasing = false;
             Renderer.material.color = Color.white;
-            transform.right = Vector3.right;
+            transform.up = Vector3.up;
         }
     }
     private IEnumerator Chase()
@@ -51,16 +51,16 @@ public class Swapper : MonoBehaviour
                 new AudioEventArgs() { sampleId = "big-octopus-swim-stem", volume = 0.8f, throttleSeconds = 0.1f }
             );
 
-            // Change color
-            //Renderer.material.color = Color.red;
 
+            Renderer.material.color = Color.magenta;
             // Look at target
-            //transform.right = LastPlayerTransform.position - transform.position;
+            transform.up = transform.position - LastPlayerTransform.position;
 
             // Wait in order to telegraph action
             yield return new WaitForSeconds(TelegraphDuration);
         }
 
+        transform.up = transform.position - LastPlayerTransform.position;
         // Move towards target
         transform.position = Vector2.MoveTowards(transform.position, LastPlayerTransform.position, Speed * Time.deltaTime);
     }
