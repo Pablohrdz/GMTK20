@@ -47,7 +47,7 @@ public class SubmarineController : MonoBehaviour
                     emitter.disableLetter();
                     Vector3 force = -emitter.transform.forward.normalized * emitter.emissionForce;
                     rb.AddForceAtPosition(force, emitter.transform.position);
-                    air -= emitter.emissionForce * airLossMultiplier;
+                    air -= emitter.emissionForce * airLossMultiplier * Time.deltaTime;
                 }
                 else
                 {
@@ -129,26 +129,13 @@ public class SubmarineController : MonoBehaviour
         if (airPocket != null)
         {
             Destroy(collision.gameObject); // TODO: animate, remember to disable collider while it fades
-            air += airPocket.air;
+            air += airPocket.air * Time.deltaTime;
             if (air > airMax)
             {
                 air = airMax;
             }
         }
     }
-
-    //private GameObject InstantiateLetter(Emitter emitter)
-    //{
-    //    if (stampPrefab == null)
-    //        throw new System.Exception("missing stamp prefab");
-    //    GameObject letter = Instantiate(
-    //        stampPrefab,
-    //        new Vector3(emitter.transform.position.x, emitter.transform.position.y, 0),
-    //        Quaternion.identity,
-    //        transform.Find("Letters"));
-    //    letter.transform.Find("Text").GetComponent<TextMesh>().text = emitter.linkedKey.ToString();
-    //    return letter;
-    //}
 
     private void SwapLetters()
     {
@@ -170,11 +157,4 @@ public class SubmarineController : MonoBehaviour
         em1.swapLetterWith(em2.transform, kc2);
         em2.swapLetterWith(em1.transform, kc1);
     }
-
-    //private void AssignLetterToEmitter(Emitter emitter, KeyCode kc)
-    //{
-    //    emitter.linkedKey = kc;
-    //    Object.Destroy(emitter.letter);
-    //    emitter.letter = InstantiateLetter(emitter);
-    //}
 }

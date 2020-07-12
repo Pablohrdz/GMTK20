@@ -133,11 +133,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   emitterPrefab: {fileID: 6672396767009706936, guid: 9fbef9734cd7a44f093d4a71ef25beaf,
     type: 3}
-  stampPrefab: {fileID: 8041699302365139390, guid: 398362f924eba6f48b3e6e7e8675ec33,
-    type: 3}
-  airMax: 1000
-  air: 1000
-  airLossMultiplier: 1
+  airMax: 100
+  air: 100
+  airLossMultiplier: 0.5
   pool: []
   HasCollectedPearl: 0
   crashDuration: 1
