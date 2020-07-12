@@ -5,7 +5,7 @@ public class SubmarineController : MonoBehaviour
 {
     // Move emissionForce to each individual emitter and enemy?
     public GameObject emitterPrefab;
-    public GameObject stampPrefab;
+    //public GameObject stampPrefab;
     public float airMax;
     public float air;
     public float airLossMultiplier;
@@ -28,7 +28,7 @@ public class SubmarineController : MonoBehaviour
             Emitter emitter = child.GetComponent<Emitter>();
             if (emitter != null)
             {
-                emitter.letter = InstantiateLetter(emitter);
+                emitter.InstantiateLetter();
                 emitters.Add(emitter);
             }
         }
@@ -40,14 +40,14 @@ public class SubmarineController : MonoBehaviour
         {
             foreach (var emitter in emitters)
             {
-                bool holeUncovered = !Input.GetKey(emitter.linkedKey) || crashing;
+                bool holeUncovered = emitter.active && (!Input.GetKey(emitter.linkedKey) || crashing);
                 emitter.enableParticles(holeUncovered);
                 if (holeUncovered)
                 {
                     emitter.disableLetter();
                     Vector3 force = -emitter.transform.forward.normalized * emitter.emissionForce;
                     rb.AddForceAtPosition(force, emitter.transform.position);
-                    air -= emitter.emissionForce * airLossMultiplier;
+                    air -= emitter.emissionForce * airLossMultiplier * Time.deltaTime;
                 }
                 else
                 {
@@ -74,9 +74,12 @@ public class SubmarineController : MonoBehaviour
         var enemy = collision.gameObject.GetComponent<Enemy>();
         if (enemy != null)
         {
+
+            AudioManager.instance.sendAudioEvent(AudioEvent.Play, this.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "swordfish-submarine-collision", volume = 0.7f, mixerChannelName = "Submarine" });
             Swordfish swordfish = collision.gameObject.GetComponent<Swordfish>();
             if (swordfish != null)
             {
+                AudioManager.instance.sendAudioEvent(AudioEvent.Play, enemy.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "swordfish-attack", volume = 0.8f, mixerChannelName = "Fauna" });
                 swordfish.DestroyCrosshair();
             }
 
@@ -95,9 +98,9 @@ public class SubmarineController : MonoBehaviour
             Emitter emitter = emitterGO.GetComponent<Emitter>();
             emitter.setLinkedKey(collision.gameObject.GetComponent<Enemy>().linkedKey);
             emitter.emissionForce = enemy.emissionForce;
-            emitter.letter = InstantiateLetter(emitter);
+            emitter.InstantiateLetter();
             emitter.enableLetter();
-            emitters.Add(emitter.GetComponent<Emitter>());
+            emitters.Add(emitter); // TODO: no necesitamos getcomponent o si? Lo dejo en lo que termino de refactorizar todo el resto del codigo
         }
 
         var swapper = collision.gameObject.GetComponent<Swapper>();
@@ -110,6 +113,7 @@ public class SubmarineController : MonoBehaviour
         // Check for collisions with the environment to shake the camera.
         if (collision.gameObject.tag == "Environment")
         {
+            AudioManager.instance.sendAudioEvent(AudioEvent.Play, this.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "submarine-crash", volume = 0.7f, mixerChannelName = "Submarine", throttleSeconds=0.2f });
             // To avoid stacking crashes
             if (!crashing)
             {
@@ -125,25 +129,12 @@ public class SubmarineController : MonoBehaviour
         if (airPocket != null)
         {
             Destroy(collision.gameObject); // TODO: animate, remember to disable collider while it fades
-            air += airPocket.air;
+            air += airPocket.air * Time.deltaTime;
             if (air > airMax)
             {
                 air = airMax;
             }
         }
-    }
-
-    private GameObject InstantiateLetter(Emitter emitter)
-    {
-        if (stampPrefab == null)
-            throw new System.Exception("missing stamp prefab");
-        GameObject letter = Instantiate(
-            stampPrefab,
-            new Vector3(emitter.transform.position.x, emitter.transform.position.y, 0),
-            Quaternion.identity,
-            transform.Find("Letters"));
-        letter.transform.Find("Text").GetComponent<TextMesh>().text = emitter.linkedKey.ToString();
-        return letter;
     }
 
     private void SwapLetters()
@@ -152,22 +143,18 @@ public class SubmarineController : MonoBehaviour
             return;
         var letter1 = Random.Range(0,transform.Find("Emitters").childCount);
         var letter2 = Random.Range(0,transform.Find("Emitters").childCount);
-        while(letter1 == letter2)
+
+        while (letter1 == letter2)
+        {
             letter2 = Random.Range(0, transform.Find("Emitters").childCount);
+        }
         //Aqui ya se decidio cuales
         Emitter em1 = transform.Find("Emitters").GetChild(letter1).GetComponent<Emitter>();
         KeyCode kc1 = em1.linkedKey;
         Emitter em2 = transform.Find("Emitters").GetChild(letter2).GetComponent<Emitter>();
         KeyCode kc2 = em2.linkedKey;
-
-        AssignLetterToEmitter(em1, kc2);
-        AssignLetterToEmitter(em2, kc1);
-    }
-
-    private void AssignLetterToEmitter(Emitter emitter, KeyCode kc)
-    {
-        emitter.linkedKey = kc;
-        Object.Destroy(emitter.letter);
-        emitter.letter = InstantiateLetter(emitter);
+        
+        em1.swapLetterWith(em2.transform, kc2);
+        em2.swapLetterWith(em1.transform, kc1);
     }
 }
