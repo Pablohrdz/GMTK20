@@ -24,7 +24,9 @@ public class Perla : MonoBehaviour
             // Activar perla en UI
             PerlImg.color = new Color(PerlImg.color.r, PerlImg.color.g, PerlImg.color.b, 1f);
 
-            Destroy(gameObject);
+            GetComponent<DialogueTrigger>().TriggerDialogue();
+
+            // Destroy(gameObject);
         }
     }
 }
