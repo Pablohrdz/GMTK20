@@ -19,7 +19,9 @@ public class LoadNextLevel : MonoBehaviour
                 new AudioEventArgs() { sampleId = "pearl-collect", volume = 1.0f, mixerChannelName="FX" }
             );
             // LoadNextScene();
+            this.GetComponent<SpriteRenderer>().enabled = false;
             StartCoroutine(waitLoadNextScene());
+
         }
     }
 
