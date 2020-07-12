@@ -25,11 +25,18 @@ public class GameOver : MonoBehaviour
             GameOverScreen.SetActive(true);
         }
         */
+
+        // TODO: Borrar esto. Es para testing.
+        if(Input.GetKeyDown(KeyCode.Backspace))
+        {
+            RestartGame();
+        }
     }
 
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Debug.Log("Restarted Game");
     }
 
     public void ExitGame()
