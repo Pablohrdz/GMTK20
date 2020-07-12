@@ -24,7 +24,7 @@ public class AudioEventArgs
 public interface Sample
 {
     void play(AudioSource source, AudioMixerGroup mixerGroup, AudioEventArgs args);
-    void stop();
+    void stop(AudioEventArgs args);
 }
 
 public class RandomSampleVariation : Sample
@@ -32,8 +32,8 @@ public class RandomSampleVariation : Sample
     public List<AudioClip> clips;
     private bool playing = false;
     private bool restoreState = false;
-    private AudioSource previousSourceState;
-    private AudioSource currentSource;
+    private Dictionary<string, AudioSource> previousSourceStates = new Dictionary<string, AudioSource>();
+    // private AudioSource currentSource;
 
     public void play(AudioSource source, AudioMixerGroup mixerGroup, AudioEventArgs args)
     {
@@ -42,8 +42,9 @@ public class RandomSampleVariation : Sample
 
         if (args.loop)
         {
-            previousSourceState = UnityEngine.Object.Instantiate(source);
-            previousSourceState.Stop();
+            // TODO to save previous states
+            // var previousSourceState = UnityEngine.Object.Instantiate(source);
+            source.Stop();
             restoreState = true;
 
             source.loop = args.loop;
@@ -54,28 +55,26 @@ public class RandomSampleVariation : Sample
         }
         else
         {
-
             source.PlayOneShot(clip, args.volume);
         }
-
-        currentSource = source;
-
-        this.playing = source.isPlaying;
+        previousSourceStates.AddOrUpdate(args.sampleId, source);
     }
-    public void stop()
+    public void stop(AudioEventArgs args)
     {
-        currentSource.Stop();
 
-        if (previousSourceState)
+        if (previousSourceStates.ContainsKey(args.sampleId))
         {
-            currentSource.clip = previousSourceState.clip;
-            currentSource.loop = previousSourceState.loop;
-            currentSource.clip = previousSourceState.clip;
-            currentSource.volume = previousSourceState.volume;
+            
+            var previousSourceState = previousSourceStates[args.sampleId];
+            previousSourceState.Stop();
+            previousSourceState.clip = previousSourceState.clip;
+            // currentSource.loop = previousSourceState.loop;
+            // currentSource.clip = previousSourceState.clip;
+            // currentSource.volume = previousSourceState.volume;
         }
 
-        playing = currentSource.isPlaying;
-        previousSourceState = null;
+        // playing = currentSource.isPlaying;
+        previousSourceStates.Remove(args.sampleId);
     }
 }
 
@@ -93,6 +92,18 @@ public static class Extensions
             dictionary.Add(key, new List<TValue> { value });
         }
     }
+
+    public static void AddOrUpdate<TKey, TValue>(this Dictionary<TKey,TValue> dictionary, TKey key, TValue value)
+    {
+        if (dictionary.ContainsKey(key))
+        {
+            dictionary[key] = value;
+        }
+        else
+        {
+            dictionary.Add(key, value);
+        }
+    }
 }
 
 public class AudioManager : MonoBehaviour
@@ -107,8 +118,13 @@ public class AudioManager : MonoBehaviour
     {
         get
         {
-            return GameObject.Find("Audio").GetComponent<AudioManager>();
+            return GameObject.FindWithTag("GameController").GetComponent<AudioManager>();
         }
+    }
+
+    public bool sendAudioEvent(AudioEvent type, AudioEventArgs args)
+    {
+        return sendAudioEvent(type, this.GetComponent<AudioSource>(), args);
     }
 
     public bool sendAudioEvent(AudioEvent type, AudioSource source, AudioEventArgs args)
@@ -124,7 +140,7 @@ public class AudioManager : MonoBehaviour
                 {
                     case AudioEvent.Play:
                         var time = Time.time;
-                        print(" diff " + (time - throttleTimer) + " trh  " + args.throttleSeconds);
+                       
                         if (time - throttleTimer < args.throttleSeconds)
                         {
                             break;
@@ -140,7 +156,7 @@ public class AudioManager : MonoBehaviour
                         }
                         break;
                     case AudioEvent.Stop:
-                        sample.stop();
+                        sample.stop(args);
                         break;
                 }
                 return true;

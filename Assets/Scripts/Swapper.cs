@@ -42,11 +42,17 @@ public class Swapper : MonoBehaviour
         {
             IsChasing = true;
 
+
             // Record original position where the fish was triggered
             LastPlayerTransform = Player;
+            AudioManager.instance.sendAudioEvent(
+                AudioEvent.Play,
+                this.GetComponent<AudioSource>(),
+                new AudioEventArgs() { sampleId = "big-octopus-swim-stem", volume = 0.8f, throttleSeconds = 0.1f }
+            );
 
 
-            Renderer.material.color = Color.magenta;
+            //Renderer.material.color = Color.magenta;
             // Look at target
             transform.up = transform.position - LastPlayerTransform.position;
 

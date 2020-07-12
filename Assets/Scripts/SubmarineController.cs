@@ -79,7 +79,7 @@ public class SubmarineController : MonoBehaviour
             Swordfish swordfish = collision.gameObject.GetComponent<Swordfish>();
             if (swordfish != null)
             {
-                AudioManager.instance.sendAudioEvent(AudioEvent.Play, enemy.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "swordfish-attack", volume = 0.8f, mixerChannelName = "Fauna" });
+                AudioManager.instance.sendAudioEvent(AudioEvent.Play, enemy.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "swordfish-attack", volume = 1.0f, mixerChannelName = "Fauna" });
                 swordfish.DestroyCrosshair();
             }
 
@@ -100,7 +100,7 @@ public class SubmarineController : MonoBehaviour
             emitter.emissionForce = enemy.emissionForce;
             emitter.InstantiateLetter();
             emitter.enableLetter();
-            emitters.Add(emitter); // TODO: no necesitamos getcomponent o si? Lo dejo en lo que termino de refactorizar todo el resto del codigo
+            emitters.Add(emitter);
         }
 
         var swapper = collision.gameObject.GetComponent<Swapper>();
@@ -128,6 +128,12 @@ public class SubmarineController : MonoBehaviour
         var airPocket = collision.gameObject.GetComponent<AirPocket>();
         if (airPocket != null)
         {
+            AudioManager.instance.sendAudioEvent(
+                AudioEvent.Play,
+                this.GetComponent<AudioSource>(),
+                new AudioEventArgs() { sampleId = "bubble-pop", volume = 0.7f, mixerChannelName = "Submarine" }
+            );
+
             Destroy(collision.gameObject); // TODO: animate, remember to disable collider while it fades
             air += airPocket.air * Time.deltaTime;
             if (air > airMax)
@@ -139,6 +145,7 @@ public class SubmarineController : MonoBehaviour
 
     private void SwapLetters()
     {
+
         if (transform.Find("Emitters").childCount < 2)
             return;
         var letter1 = Random.Range(0,transform.Find("Emitters").childCount);
@@ -156,5 +163,6 @@ public class SubmarineController : MonoBehaviour
         
         em1.swapLetterWith(em2.transform, kc2);
         em2.swapLetterWith(em1.transform, kc1);
+        AudioManager.instance.sendAudioEvent(AudioEvent.Play, this.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "key-swap", volume = 1.0f, mixerChannelName = "Submarine" });
     }
 }

@@ -26,6 +26,7 @@ public class Swordfish : Enemy
     {
         Player = GameObject.FindGameObjectWithTag("Player").transform;
         Renderer = GetComponent<SpriteRenderer>();
+        gameObject.transform.Find("Text").GetComponent<TextMesh>().text = linkedKey.ToString();
     }
 
     // Update is called once per frame
@@ -53,6 +54,11 @@ public class Swordfish : Enemy
         if (!IsChasing)
         {
             IsChasing = true;
+            AudioManager.instance.sendAudioEvent(
+                AudioEvent.Play,
+                this.GetComponent<AudioSource>(),
+                new AudioEventArgs() { sampleId = "swordfish-swim-loop", volume = 0.8f, throttleSeconds = 2.0f }
+            );
 
             // Record original position where the fish was triggered
             LastPlayerTransform = Player;
@@ -61,10 +67,10 @@ public class Swordfish : Enemy
             InstancedCrosshair = Instantiate(CrosshairPrefab, LastPlayerTransform.position, Quaternion.identity);
 
             // Change color
-            Renderer.material.color = Color.red;
+            //Renderer.material.color = Color.red;
 
             // Look at target
-            transform.right = LastPlayerTransform.position - transform.position;
+            transform.right = transform.position - LastPlayerTransform.position;
 
             // Wait in order to telegraph action
             yield return new WaitForSeconds(TelegraphDuration);
