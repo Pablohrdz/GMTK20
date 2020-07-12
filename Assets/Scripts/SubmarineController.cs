@@ -153,19 +153,19 @@ public class SubmarineController : MonoBehaviour
     private void SwapLetters()
     {
 
-        if (transform.Find("Emitters").childCount < 2)
+        if (emitters.Count < 2)
             return;
-        var letter1 = Random.Range(0,transform.Find("Emitters").childCount);
-        var letter2 = Random.Range(0,transform.Find("Emitters").childCount);
+        var letter1 = Random.Range(0, emitters.Count);
+        var letter2 = Random.Range(0, emitters.Count);
 
         while (letter1 == letter2)
         {
-            letter2 = Random.Range(0, transform.Find("Emitters").childCount);
+            letter2 = Random.Range(0, emitters.Count);
         }
         //Aqui ya se decidio cuales
-        Emitter em1 = transform.Find("Emitters").GetChild(letter1).GetComponent<Emitter>();
+        Emitter em1 = emitters[letter1].GetComponent<Emitter>();
         KeyCode kc1 = em1.linkedKey;
-        Emitter em2 = transform.Find("Emitters").GetChild(letter2).GetComponent<Emitter>();
+        Emitter em2 = emitters[letter2].GetComponent<Emitter>();
         KeyCode kc2 = em2.linkedKey;
         
         em1.swapLetterWith(em2.transform, kc2);
