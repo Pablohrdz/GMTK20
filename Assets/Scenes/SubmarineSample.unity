@@ -372,6 +372,11 @@ PrefabInstance:
       propertyPath: air
       value: 2000
       objectReference: {fileID: 0}
+    - target: {fileID: 4104868100259347119, guid: 2d415434c7fc8434db394baa0ad67445,
+        type: 3}
+      propertyPath: crashDuration
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6039670754893362004, guid: 2d415434c7fc8434db394baa0ad67445,
         type: 3}
       propertyPath: m_LocalPosition.x
