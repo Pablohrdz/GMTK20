@@ -1939,6 +1939,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5249036971893337104, guid: d2b28d5a73ee33a4e9ef6906d1dfcf40,
+        type: 3}
+      propertyPath: clips.Array.size
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 5249036971893337104, guid: d2b28d5a73ee33a4e9ef6906d1dfcf40,
+        type: 3}
+      propertyPath: clips.Array.data[69]
+      value: 
+      objectReference: {fileID: 8300000, guid: e5ec35c0f651db84d861638d3e294029, type: 3}
     - target: {fileID: 7240408221280034840, guid: d2b28d5a73ee33a4e9ef6906d1dfcf40,
         type: 3}
       propertyPath: m_Name
