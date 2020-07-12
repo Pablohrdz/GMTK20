@@ -41,7 +41,24 @@ public class SubmarineController : MonoBehaviour
     void Update()
     {
         var uncoveredNumber = 0;
-        if (air >= 0)
+        if (healing)
+        {
+            foreach (var emitter in emitters)
+            {
+                bool selectedToHeal = Input.GetKeyDown(emitter.linkedKey);
+
+                if (selectedToHeal)
+                {
+                    // TODO: sound
+                    emitters.Remove(emitter);
+                    GameObject.Destroy(emitter.gameObject);
+                    healing = false;
+                    gamePause.Healing(false);
+                    break;
+                }
+            }
+        }
+        else if (air >= 0)
         {
             foreach (var emitter in emitters)
             {
@@ -91,29 +108,7 @@ public class SubmarineController : MonoBehaviour
 
                 StartCoroutine(AudioManager.instance.StartFade("volumeMaster", 13.0f, 0.0f));
             }
-        }
-        //if (Input.GetKeyDown(KeyCode.O))
-        //{
-        //    SwapLetters();
-        //}
-
-        if (healing)
-        {
-            foreach (var emitter in emitters)
-            {
-                bool selectedToHeal = Input.GetKeyDown(emitter.linkedKey);
-
-                if (selectedToHeal)
-                {
-                    // TODO: sound
-                    emitters.Remove(emitter);
-                    GameObject.Destroy(emitter.gameObject);
-                    healing = false;
-                    gamePause.Healing(false);
-                    break;
-                }
-            }
-        }
+        }    
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
