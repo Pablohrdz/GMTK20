@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec554d791fe647144a93c2327dc7efdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 2
+  Speed: 4
   DetectionRadius: 15
   TelegraphDuration: 1
 --- !u!82 &5533149979885432944
