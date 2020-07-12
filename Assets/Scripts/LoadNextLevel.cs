@@ -14,8 +14,19 @@ public class LoadNextLevel : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            LoadNextScene();
+            AudioManager.instance.sendAudioEvent(
+                AudioEvent.Play,
+                new AudioEventArgs() { sampleId = "pearl-collect", volume = 1.0f, mixerChannelName="FX" }
+            );
+            // LoadNextScene();
+            StartCoroutine(waitLoadNextScene());
         }
+    }
+
+    public IEnumerator waitLoadNextScene()
+    {
+        yield return new WaitForSeconds(0.4f);
+        LoadNextScene();
     }
 
     public void Quit()
