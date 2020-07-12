@@ -83,6 +83,12 @@ public class SubmarineController : MonoBehaviour
             SwapLetters();
             Destroy(collision.gameObject); // TODO: animate, remember to disable collider while it fades
         }
+
+        // Check for collisions with the environment to shake the camera.
+        if (collision.gameObject.tag == "Environment")
+        {
+            CameraShake.Instance.ShakeCamera(10.0f, 0.3f /* secs */);
+        }
     }
 
     private GameObject InstantiateLetter(Emitter emitter)
