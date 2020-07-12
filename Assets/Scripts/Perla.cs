@@ -6,11 +6,13 @@ using UnityEngine;
 public class Perla : MonoBehaviour
 {
     public Image PerlImg;
+    private Animator Animator;
 
     private void Start()
     {
         // Set alpha to 0
-        PerlImg.color = new Color(PerlImg.color.r, PerlImg.color.g, PerlImg.color.b, 0f); 
+        PerlImg.color = new Color(PerlImg.color.r, PerlImg.color.g, PerlImg.color.b, 0f);
+        Animator = GetComponent<Animator>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -24,6 +26,7 @@ public class Perla : MonoBehaviour
             // Activar perla en UI
             PerlImg.color = new Color(PerlImg.color.r, PerlImg.color.g, PerlImg.color.b, 1f);
 
+            Animator.SetTrigger("Open");
             // Destroy(gameObject);
         }
     }

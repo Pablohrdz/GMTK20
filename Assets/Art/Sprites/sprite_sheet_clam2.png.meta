@@ -1,12 +1,162 @@
 fileFormatVersion: 2
 guid: 0768296afab694b20a6627aa9c5020db
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 1932468928487478643
+    second: sprite_sheet_clam2_0
+  - first:
+      213: 6632082894229110022
+    second: sprite_sheet_clam2_1
+  - first:
+      213: -1578033080595347272
+    second: sprite_sheet_clam2_2
+  - first:
+      213: 8310401180576771757
+    second: sprite_sheet_clam2_3
+  - first:
+      213: 5954955678701531998
+    second: sprite_sheet_clam2_4
+  - first:
+      213: -2286985913029646630
+    second: sprite_sheet_clam2_5
+  - first:
+      213: -2759293028716441688
+    second: sprite_sheet_clam2_6
+  - first:
+      213: 4817610041131972157
+    second: sprite_sheet_clam2_7
+  - first:
+      213: 5144133156348782002
+    second: sprite_sheet_clam2_8
+  - first:
+      213: 2977950292578727495
+    second: sprite_sheet_clam2_9
+  - first:
+      213: -1782230735989215553
+    second: sprite_sheet_clam2_10
+  - first:
+      213: 6806193296455803625
+    second: sprite_sheet_clam2_11
+  - first:
+      213: 2618610641968162832
+    second: sprite_sheet_clam2_12
+  - first:
+      213: -56295657078262971
+    second: sprite_sheet_clam2_13
+  - first:
+      213: -392235681579538208
+    second: sprite_sheet_clam2_14
+  - first:
+      213: 4107370282875348232
+    second: sprite_sheet_clam2_15
+  - first:
+      213: -2402810959253110268
+    second: sprite_sheet_clam2_16
+  - first:
+      213: -722200167237201425
+    second: sprite_sheet_clam2_17
+  - first:
+      213: -6841500112593722001
+    second: sprite_sheet_clam2_18
+  - first:
+      213: 587254196953507701
+    second: sprite_sheet_clam2_19
+  - first:
+      213: 2935457891358931873
+    second: sprite_sheet_clam2_20
+  - first:
+      213: 5206040235872659021
+    second: sprite_sheet_clam2_21
+  - first:
+      213: 6963983093368222019
+    second: sprite_sheet_clam2_22
+  - first:
+      213: -5487207638855155108
+    second: sprite_sheet_clam2_23
+  - first:
+      213: 560219188997727031
+    second: sprite_sheet_clam2_24
+  - first:
+      213: 4456013870871659277
+    second: sprite_sheet_clam2_25
+  - first:
+      213: -8311308556272711739
+    second: sprite_sheet_clam2_26
+  - first:
+      213: 5852527623902051040
+    second: sprite_sheet_clam2_27
+  - first:
+      213: 7520586694211967599
+    second: sprite_sheet_clam2_28
+  - first:
+      213: 874036331125969004
+    second: sprite_sheet_clam2_29
+  - first:
+      213: 3998280767553451353
+    second: sprite_sheet_clam2_30
+  - first:
+      213: -668185974166538386
+    second: sprite_sheet_clam2_31
+  - first:
+      213: 4745245133783553721
+    second: sprite_sheet_clam2_32
+  - first:
+      213: -6787239176019332501
+    second: sprite_sheet_clam2_33
+  - first:
+      213: 7878157024460606428
+    second: sprite_sheet_clam2_34
+  - first:
+      213: 4889418583300225349
+    second: sprite_sheet_clam2_35
+  - first:
+      213: 4499926347238218830
+    second: sprite_sheet_clam2_36
+  - first:
+      213: 7583017227729074300
+    second: sprite_sheet_clam2_37
+  - first:
+      213: 2090890139843590910
+    second: sprite_sheet_clam2_38
+  - first:
+      213: 1144875146425186071
+    second: sprite_sheet_clam2_39
+  - first:
+      213: -8850698132274168853
+    second: sprite_sheet_clam2_40
+  - first:
+      213: -5242005877967909977
+    second: sprite_sheet_clam2_41
+  - first:
+      213: 2464418831766726756
+    second: sprite_sheet_clam2_42
+  - first:
+      213: -7844387453170538589
+    second: sprite_sheet_clam2_43
+  - first:
+      213: 283013131584772144
+    second: sprite_sheet_clam2_44
+  - first:
+      213: -1880828244912244685
+    second: sprite_sheet_clam2_45
+  - first:
+      213: 5161763389220691328
+    second: sprite_sheet_clam2_46
+  - first:
+      213: 9171922005133993030
+    second: sprite_sheet_clam2_47
+  - first:
+      213: -2161131278458786154
+    second: sprite_sheet_clam2_48
+  - first:
+      213: -5548556785567151272
+    second: sprite_sheet_clam2_49
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -34,13 +184,13 @@ TextureImporter:
     filterMode: -1
     aniso: -1
     mipBias: -100
-    wrapU: -1
-    wrapV: -1
+    wrapU: 1
+    wrapV: 1
     wrapW: -1
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -49,9 +199,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   maxTextureSizeSet: 0
@@ -71,13 +221,1087 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_0
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 1076
+        width: 232
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 375d9f5704281da10800000000000000
+      internalID: 1932468928487478643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_1
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 1076
+        width: 233
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60d78770144e90c50800000000000000
+      internalID: 6632082894229110022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_2
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 1076
+        width: 234
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b88c432643b91ae0800000000000000
+      internalID: -1578033080595347272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_3
+      rect:
+        serializedVersion: 2
+        x: 779
+        y: 1076
+        width: 233
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: daee345e7d9745370800000000000000
+      internalID: 8310401180576771757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_4
+      rect:
+        serializedVersion: 2
+        x: 1036
+        y: 1076
+        width: 232
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e53333a93a044a250800000000000000
+      internalID: 5954955678701531998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_5
+      rect:
+        serializedVersion: 2
+        x: 1292
+        y: 1076
+        width: 232
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad6ab87dd6ef240e0800000000000000
+      internalID: -2286985913029646630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_6
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 1076
+        width: 233
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8af05281c9505b9d0800000000000000
+      internalID: -2759293028716441688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_7
+      rect:
+        serializedVersion: 2
+        x: 1803
+        y: 1076
+        width: 234
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d36b600cec69bd240800000000000000
+      internalID: 4817610041131972157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_8
+      rect:
+        serializedVersion: 2
+        x: 2059
+        y: 1076
+        width: 234
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b56a75d9d1a36740800000000000000
+      internalID: 5144133156348782002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_9
+      rect:
+        serializedVersion: 2
+        x: 2316
+        y: 1076
+        width: 233
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 746fce3630ec35920800000000000000
+      internalID: 2977950292578727495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_10
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 819
+        width: 234
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbe6499969e3447e0800000000000000
+      internalID: -1782230735989215553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_11
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 819
+        width: 234
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e2a4eb0eb4747e50800000000000000
+      internalID: 6806193296455803625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_12
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 819
+        width: 234
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 018e19f318c275420800000000000000
+      internalID: 2618610641968162832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_13
+      rect:
+        serializedVersion: 2
+        x: 779
+        y: 819
+        width: 234
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 543f37de56ff73ff0800000000000000
+      internalID: -56295657078262971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_14
+      rect:
+        serializedVersion: 2
+        x: 1036
+        y: 819
+        width: 233
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e8e73bc9bf7e8af0800000000000000
+      internalID: -392235681579538208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_15
+      rect:
+        serializedVersion: 2
+        x: 1292
+        y: 819
+        width: 232
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 805e7cfa28f400930800000000000000
+      internalID: 4107370282875348232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_16
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 819
+        width: 233
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4028d47c92087aed0800000000000000
+      internalID: -2402810959253110268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_17
+      rect:
+        serializedVersion: 2
+        x: 1803
+        y: 819
+        width: 234
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe1591736ca3af5f0800000000000000
+      internalID: -722200167237201425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_18
+      rect:
+        serializedVersion: 2
+        x: 2059
+        y: 819
+        width: 233
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f656e0a35eb1e01a0800000000000000
+      internalID: -6841500112593722001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_19
+      rect:
+        serializedVersion: 2
+        x: 2316
+        y: 819
+        width: 231
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 577654aa498562800800000000000000
+      internalID: 587254196953507701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_20
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 563
+        width: 231
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1abf0934667dcb820800000000000000
+      internalID: 2935457891358931873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_21
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 563
+        width: 232
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d46a49103029f3840800000000000000
+      internalID: 5206040235872659021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_22
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 563
+        width: 233
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 341f9060ab905a060800000000000000
+      internalID: 6963983093368222019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_23
+      rect:
+        serializedVersion: 2
+        x: 778
+        y: 563
+        width: 234
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c528a3599b589d3b0800000000000000
+      internalID: -5487207638855155108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_24
+      rect:
+        serializedVersion: 2
+        x: 1034
+        y: 563
+        width: 233
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 733219c526c46c700800000000000000
+      internalID: 560219188997727031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_25
+      rect:
+        serializedVersion: 2
+        x: 1291
+        y: 563
+        width: 232
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d03c48fa101f6dd30800000000000000
+      internalID: 4456013870871659277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_26
+      rect:
+        serializedVersion: 2
+        x: 1547
+        y: 563
+        width: 232
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c743bc37ec48ac80800000000000000
+      internalID: -8311308556272711739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_27
+      rect:
+        serializedVersion: 2
+        x: 1803
+        y: 563
+        width: 233
+        height: 133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0eab7dcadda583150800000000000000
+      internalID: 5852527623902051040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_28
+      rect:
+        serializedVersion: 2
+        x: 2058
+        y: 563
+        width: 234
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6a980ba0cd7e5860800000000000000
+      internalID: 7520586694211967599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_29
+      rect:
+        serializedVersion: 2
+        x: 2314
+        y: 563
+        width: 233
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c609c8d8963312c00800000000000000
+      internalID: 874036331125969004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_30
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 308
+        width: 231
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 955bc4e9c2fbc7730800000000000000
+      internalID: 3998280767553451353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_31
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 308
+        width: 231
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e67b7ed85602ab6f0800000000000000
+      internalID: -668185974166538386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_32
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 308
+        width: 234
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b6d15bce4f7ad140800000000000000
+      internalID: 4745245133783553721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_33
+      rect:
+        serializedVersion: 2
+        x: 779
+        y: 308
+        width: 233
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b62b0c30ee1eec1a0800000000000000
+      internalID: -6787239176019332501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_34
+      rect:
+        serializedVersion: 2
+        x: 1036
+        y: 308
+        width: 233
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdb09bfc216d45d60800000000000000
+      internalID: 7878157024460606428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_35
+      rect:
+        serializedVersion: 2
+        x: 1292
+        y: 308
+        width: 234
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 549bdc7db44bad340800000000000000
+      internalID: 4889418583300225349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_36
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 308
+        width: 234
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4c1e82db23f27e30800000000000000
+      internalID: 4499926347238218830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_37
+      rect:
+        serializedVersion: 2
+        x: 1803
+        y: 308
+        width: 234
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c787578fdf94c3960800000000000000
+      internalID: 7583017227729074300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_38
+      rect:
+        serializedVersion: 2
+        x: 2059
+        y: 308
+        width: 234
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efa7eb11185540d10800000000000000
+      internalID: 2090890139843590910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_39
+      rect:
+        serializedVersion: 2
+        x: 2316
+        y: 308
+        width: 233
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 717b8de31e963ef00800000000000000
+      internalID: 1144875146425186071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_40
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 52
+        width: 234
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bebb59311f00c2580800000000000000
+      internalID: -8850698132274168853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_41
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 52
+        width: 234
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ab86356d67a047b0800000000000000
+      internalID: -5242005877967909977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_42
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 52
+        width: 234
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4682d35dedf533220800000000000000
+      internalID: 2464418831766726756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_43
+      rect:
+        serializedVersion: 2
+        x: 779
+        y: 52
+        width: 233
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a72d353c23232390800000000000000
+      internalID: -7844387453170538589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_44
+      rect:
+        serializedVersion: 2
+        x: 1036
+        y: 52
+        width: 232
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03891e691f67de300800000000000000
+      internalID: 283013131584772144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_45
+      rect:
+        serializedVersion: 2
+        x: 1292
+        y: 52
+        width: 231
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 338fb722da4f5e5e0800000000000000
+      internalID: -1880828244912244685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_46
+      rect:
+        serializedVersion: 2
+        x: 1547
+        y: 52
+        width: 232
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08d9d1d447442a740800000000000000
+      internalID: 5161763389220691328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_47
+      rect:
+        serializedVersion: 2
+        x: 1803
+        y: 52
+        width: 233
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 644a99ff776394f70800000000000000
+      internalID: 9171922005133993030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_48
+      rect:
+        serializedVersion: 2
+        x: 2058
+        y: 52
+        width: 234
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69e6a7a6d8e1202e0800000000000000
+      internalID: -2161131278458786154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_clam2_49
+      rect:
+        serializedVersion: 2
+        x: 2314
+        y: 52
+        width: 233
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85bcf2440019ff2b0800000000000000
+      internalID: -5548556785567151272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: ce3f314e1dda0004db439cfb21a72614
     internalID: 0
     vertices: []
     indices: 
