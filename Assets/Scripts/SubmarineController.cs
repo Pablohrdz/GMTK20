@@ -128,6 +128,12 @@ public class SubmarineController : MonoBehaviour
         var airPocket = collision.gameObject.GetComponent<AirPocket>();
         if (airPocket != null)
         {
+            AudioManager.instance.sendAudioEvent(
+                AudioEvent.Play,
+                this.GetComponent<AudioSource>(),
+                new AudioEventArgs() { sampleId = "bubble-pop", volume = 0.7f, mixerChannelName = "Submarine" }
+            );
+
             Destroy(collision.gameObject); // TODO: animate, remember to disable collider while it fades
             air += airPocket.air;
             if (air > airMax)
