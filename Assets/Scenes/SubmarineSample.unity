@@ -1942,13 +1942,18 @@ PrefabInstance:
     - target: {fileID: 5249036971893337104, guid: d2b28d5a73ee33a4e9ef6906d1dfcf40,
         type: 3}
       propertyPath: clips.Array.size
-      value: 70
+      value: 71
       objectReference: {fileID: 0}
     - target: {fileID: 5249036971893337104, guid: d2b28d5a73ee33a4e9ef6906d1dfcf40,
         type: 3}
       propertyPath: clips.Array.data[69]
       value: 
       objectReference: {fileID: 8300000, guid: e5ec35c0f651db84d861638d3e294029, type: 3}
+    - target: {fileID: 5249036971893337104, guid: d2b28d5a73ee33a4e9ef6906d1dfcf40,
+        type: 3}
+      propertyPath: clips.Array.data[70]
+      value: 
+      objectReference: {fileID: 8300000, guid: b31125e950496b44893f2bfa6dbcd053, type: 3}
     - target: {fileID: 7240408221280034840, guid: d2b28d5a73ee33a4e9ef6906d1dfcf40,
         type: 3}
       propertyPath: m_Name

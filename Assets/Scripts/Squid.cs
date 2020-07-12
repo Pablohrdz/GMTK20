@@ -48,12 +48,28 @@ public class Squid : MonoBehaviour
 
         if (!IsRunning)
         {
+            AudioManager.instance.sendAudioEvent(
+                AudioEvent.Play,
+                this.GetComponent<AudioSource>(),
+                new AudioEventArgs() { sampleId = "octopus-swim-stem", volume = 0.8f, throttleSeconds = 0.06f }
+            );
             // Record original position where the squid
             LastPlayerTransform = Player;
             Renderer.material.color = Color.blue;
             transform.up = transform.position - LastPlayerTransform.position;
             IsRunning = true;
+
+            if (!Ink.emission.enabled)
+            {
+                AudioManager.instance.sendAudioEvent(
+                   AudioEvent.Play,
+                   this.GetComponent<AudioSource>(),
+                   new AudioEventArgs() { sampleId = "ink-splash", volume = 1.0f }
+               );
+            }
+
             enableParticles(true);
+           
             // Wait in order to telegraph action
             yield return new WaitForSeconds(TelegraphDuration);
         }
