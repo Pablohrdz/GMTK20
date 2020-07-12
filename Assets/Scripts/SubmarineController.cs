@@ -74,9 +74,12 @@ public class SubmarineController : MonoBehaviour
         var enemy = collision.gameObject.GetComponent<Enemy>();
         if (enemy != null)
         {
+
+            AudioManager.instance.sendAudioEvent(AudioEvent.Play, this.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "swordfish-submarine-collision", volume = 0.7f, mixerChannelName = "Submarine" });
             Swordfish swordfish = collision.gameObject.GetComponent<Swordfish>();
             if (swordfish != null)
             {
+                AudioManager.instance.sendAudioEvent(AudioEvent.Play, enemy.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "swordfish-attack", volume = 0.8f, mixerChannelName = "Fauna" });
                 swordfish.DestroyCrosshair();
             }
 
@@ -110,6 +113,7 @@ public class SubmarineController : MonoBehaviour
         // Check for collisions with the environment to shake the camera.
         if (collision.gameObject.tag == "Environment")
         {
+            AudioManager.instance.sendAudioEvent(AudioEvent.Play, this.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "submarine-crash", volume = 0.7f, mixerChannelName = "Submarine", throttleSeconds=0.2f });
             // To avoid stacking crashes
             if (!crashing)
             {
