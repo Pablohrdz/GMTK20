@@ -18,8 +18,11 @@ public class Crab : Enemy
 
     void Update()
     {
-        Destroy(GetComponent<PolygonCollider2D>());
-        gameObject.AddComponent<PolygonCollider2D>();
+        if (!destroyed)
+        {
+            Destroy(GetComponent<PolygonCollider2D>());
+            gameObject.AddComponent<PolygonCollider2D>();
+        }
 
         float DistanceToPlayer = Vector3.Distance(transform.position, Player.position);
         // Debug.Log(DistanceToPlayer);

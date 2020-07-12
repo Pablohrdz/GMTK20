@@ -121,6 +121,7 @@ public class SubmarineController : MonoBehaviour
         var enemy = collision.gameObject.GetComponent<Enemy>();
         if (enemy != null)
         {
+            enemy.destroyed = true;
             AudioManager.instance.sendAudioEvent(AudioEvent.Play, this.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "swordfish-submarine-collision", volume = 0.9f, mixerChannelName = "Submarine" });
             Swordfish swordfish = collision.gameObject.GetComponent<Swordfish>();
             if (swordfish != null)
@@ -132,8 +133,6 @@ public class SubmarineController : MonoBehaviour
             {
                 AudioManager.instance.sendAudioEvent(AudioEvent.Play, this.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "crab-hit", volume = 1.0f, mixerChannelName = "Fauna" });
             }
-
-            Destroy(collision.gameObject); // TODO: animate, remember to disable collider while it fades
 
             ContactPoint2D contact = collision.contacts[0];
 
@@ -150,13 +149,16 @@ public class SubmarineController : MonoBehaviour
             emitter.InstantiateLetter();
             emitter.enableLetter();
             emitters.Add(emitter);
+            StartCoroutine(enemy.FadeOut());
         }
 
         var swapper = collision.gameObject.GetComponent<Swapper>();
         if (swapper != null)
         {
+            swapper.destroyed = true;
             SwapLetters();
-            Destroy(collision.gameObject); // TODO: animate, remember to disable collider while it fades
+            Destroy(collision.gameObject);
+            StartCoroutine(swapper.FadeOut());
         }
 
         // Check for collisions with the environment to shake the camera.
