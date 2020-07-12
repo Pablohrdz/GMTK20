@@ -18,7 +18,10 @@ public class Emitter : MonoBehaviour
         ParticleSystem.EmissionModule emission = particles.emission;
         emission.rateOverTime = emissionForce * particleIntensityMultiplier;
     }
-
+    public void Update()
+    {
+        letter.transform.Find("Text").transform.up = Vector2.up;
+    }
     public void enableParticles(bool enable)
     {
         ParticleSystem.EmissionModule emission = particles.emission;

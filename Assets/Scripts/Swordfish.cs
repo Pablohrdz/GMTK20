@@ -36,6 +36,7 @@ public class Swordfish : Enemy
         float DistanceToPlayer = Vector3.Distance(transform.position, Player.position);
         // Debug.Log(DistanceToPlayer);
 
+        gameObject.transform.Find("Text").transform.up = Vector2.up;
         if (DistanceToPlayer <= DetectionRadius && !destroyed)
         {
             StartCoroutine(Chase());
