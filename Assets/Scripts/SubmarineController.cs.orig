@@ -1,22 +1,16 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 
 public class SubmarineController : MonoBehaviour
 {
-    // Move emissionForce to each individual emitter and enemy?
+    // move emissionForce to each individual emitter and enemy?
     public GameObject emitterPrefab;
     public GameObject stampPrefab;
-    public float airMax;
-    public float air;
-    public float airLossMultiplier;
-    public List<GameObject> pool;
-    public bool HasCollectedPearl;
-    public float crashDuration;
-
     List<Emitter> emitters;
     Rigidbody2D rb;
-    float timeOfCrash;
-    bool crashing { get { return Time.time - timeOfCrash < crashDuration; } }
+    public List<GameObject> pool;
+    public bool HasCollectedPearl;
 
     void Start()
     {
@@ -30,37 +24,27 @@ public class SubmarineController : MonoBehaviour
             {
                 emitter.letter = InstantiateLetter(emitter);
                 emitters.Add(emitter);
+
             }
         }
     }
 
     void Update()
     {
-        if (air >= 0)
+        foreach (var emitter in emitters)
         {
-            foreach (var emitter in emitters)
+            if (!emitter.active) { continue; }
+            bool holeCovered = Input.GetKey(emitter.linkedKey);
+            emitter.enableParticles(!holeCovered);
+            if (!holeCovered)
             {
-                bool holeUncovered = !Input.GetKey(emitter.linkedKey) || crashing;
-                emitter.enableParticles(holeUncovered);
-                if (holeUncovered)
-                {
-                    emitter.disableLetter();
-                    Vector3 force = -emitter.transform.forward.normalized * emitter.emissionForce;
-                    rb.AddForceAtPosition(force, emitter.transform.position);
-                    air -= emitter.emissionForce * airLossMultiplier;
-                }
-                else
-                {
-                    emitter.enableLetter();
-                }
+                emitter.disableLetter();
+                Vector3 force = -emitter.transform.forward.normalized * emitter.emissionForce;
+                rb.AddForceAtPosition(force, emitter.transform.position);
             }
-        }
-        else
-        {
-            foreach (var emitter in emitters)
+            else
             {
-                emitter.enableParticles(false);
-                // TODO: dead animation
+               emitter.enableLetter();
             }
         }
         if (Input.GetKeyDown(KeyCode.O))
@@ -74,15 +58,6 @@ public class SubmarineController : MonoBehaviour
         var enemy = collision.gameObject.GetComponent<Enemy>();
         if (enemy != null)
         {
-
-            AudioManager.instance.sendAudioEvent(AudioEvent.Play, this.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "swordfish-submarine-collision", volume = 0.7f, mixerChannelName = "Submarine" });
-            Swordfish swordfish = collision.gameObject.GetComponent<Swordfish>();
-            if (swordfish != null)
-            {
-                AudioManager.instance.sendAudioEvent(AudioEvent.Play, enemy.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "swordfish-attack", volume = 0.8f, mixerChannelName = "Fauna" });
-                swordfish.DestroyCrosshair();
-            }
-
             Destroy(collision.gameObject); // TODO: animate, remember to disable collider while it fades
 
             // TODO: there should only be one hit, but we should double check...
@@ -102,7 +77,6 @@ public class SubmarineController : MonoBehaviour
             emitter.enableLetter();
             emitters.Add(emitter.GetComponent<Emitter>());
         }
-
         var swapper = collision.gameObject.GetComponent<Swapper>();
         if (swapper != null)
         {
@@ -113,27 +87,8 @@ public class SubmarineController : MonoBehaviour
         // Check for collisions with the environment to shake the camera.
         if (collision.gameObject.tag == "Environment")
         {
-            AudioManager.instance.sendAudioEvent(AudioEvent.Play, this.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "submarine-crash", volume = 0.7f, mixerChannelName = "Submarine", throttleSeconds=0.2f });
-            // To avoid stacking crashes
-            if (!crashing)
-            {
-                timeOfCrash = Time.time;
-            }
+            AudioManager.instance.sendAudioEvent(AudioEvent.Play, this.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "submarine-crash", volume = 0.7f, throttleSeconds =  0.2f });
             CameraShake.Instance.ShakeCamera(10.0f, 0.3f /* secs */);
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        var airPocket = collision.gameObject.GetComponent<AirPocket>();
-        if (airPocket != null)
-        {
-            Destroy(collision.gameObject); // TODO: animate, remember to disable collider while it fades
-            air += airPocket.air;
-            if (air > airMax)
-            {
-                air = airMax;
-            }
         }
     }
 
@@ -166,6 +121,7 @@ public class SubmarineController : MonoBehaviour
 
         AssignLetterToEmitter(em1, kc2);
         AssignLetterToEmitter(em2, kc1);
+
     }
 
     private void AssignLetterToEmitter(Emitter emitter, KeyCode kc)
@@ -174,4 +130,5 @@ public class SubmarineController : MonoBehaviour
         Object.Destroy(emitter.letter);
         emitter.letter = InstantiateLetter(emitter);
     }
+
 }
