@@ -74,6 +74,12 @@ public class SubmarineController : MonoBehaviour
         var enemy = collision.gameObject.GetComponent<Enemy>();
         if (enemy != null)
         {
+            Swordfish swordfish = collision.gameObject.GetComponent<Swordfish>();
+            if (swordfish != null)
+            {
+                swordfish.DestroyCrosshair();
+            }
+
             Destroy(collision.gameObject); // TODO: animate, remember to disable collider while it fades
 
             // TODO: there should only be one hit, but we should double check...
