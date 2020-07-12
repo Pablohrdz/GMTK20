@@ -22,8 +22,6 @@ public class SubmarineController : MonoBehaviour
             Emitter emitter = child.GetComponent<Emitter>();
             if (emitter != null)
             {
-                //emitter.letter.transform.position = transform.position + new Vector3(emitter.offset.x, emitter.offset.y);
-                ///AssignLetterToEmitter(emitter, emitter.linkedKey);
                 emitter.letter = InstantiateLetter(emitter);
                 emitters.Add(emitter);
 
@@ -85,6 +83,12 @@ public class SubmarineController : MonoBehaviour
             SwapLetters();
             Destroy(collision.gameObject); // TODO: animate, remember to disable collider while it fades
         }
+
+        // Check for collisions with the environment to shake the camera.
+        if (collision.gameObject.tag == "Environment")
+        {
+            CameraShake.Instance.ShakeCamera(10.0f, 0.3f /* secs */);
+        }
     }
 
     private GameObject InstantiateLetter(Emitter emitter)
@@ -102,6 +106,8 @@ public class SubmarineController : MonoBehaviour
 
     private void SwapLetters()
     {
+        if (transform.Find("Emitters").childCount < 2)
+            return;
         var letter1 = Random.Range(0,transform.Find("Emitters").childCount);
         var letter2 = Random.Range(0,transform.Find("Emitters").childCount);
         while(letter1 == letter2)
