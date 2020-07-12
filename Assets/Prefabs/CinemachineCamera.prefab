@@ -157,7 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LookaheadTime: 1
   m_LookaheadSmoothing: 1
-  m_LookaheadIgnoreY: 1
+  m_LookaheadIgnoreY: 0
   m_XDamping: 0.15
   m_YDamping: 0.15
   m_ZDamping: 0.15
