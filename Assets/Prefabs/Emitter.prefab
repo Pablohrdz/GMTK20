@@ -4769,5 +4769,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   linkedKey: 97
   emissionForce: 1
-  letter: {fileID: 0}
+  stampPrefab: {fileID: 8041699302365139390, guid: 398362f924eba6f48b3e6e7e8675ec33,
+    type: 3}
   active: 1
