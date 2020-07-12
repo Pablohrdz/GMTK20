@@ -235,6 +235,7 @@ MonoBehaviour:
   pool: []
   HasCollectedPearl: 0
   crashDuration: 1
+  gameEnded: 0
 --- !u!50 &975443978468954046
 Rigidbody2D:
   serializedVersion: 4
