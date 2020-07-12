@@ -10,6 +10,7 @@ public class SubmarineController : MonoBehaviour
     List<Emitter> emitters;
     Rigidbody2D rb;
     public List<GameObject> pool;
+    public bool HasCollectedPearl;
 
     void Start()
     {
@@ -21,8 +22,6 @@ public class SubmarineController : MonoBehaviour
             Emitter emitter = child.GetComponent<Emitter>();
             if (emitter != null)
             {
-                //emitter.letter.transform.position = transform.position + new Vector3(emitter.offset.x, emitter.offset.y);
-                ///AssignLetterToEmitter(emitter, emitter.linkedKey);
                 emitter.letter = InstantiateLetter(emitter);
                 emitters.Add(emitter);
 
@@ -107,6 +106,8 @@ public class SubmarineController : MonoBehaviour
 
     private void SwapLetters()
     {
+        if (transform.Find("Emitters").childCount < 2)
+            return;
         var letter1 = Random.Range(0,transform.Find("Emitters").childCount);
         var letter2 = Random.Range(0,transform.Find("Emitters").childCount);
         while(letter1 == letter2)
