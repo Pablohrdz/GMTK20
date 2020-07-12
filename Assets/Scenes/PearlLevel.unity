@@ -2073,7 +2073,7 @@ PrefabInstance:
     - target: {fileID: 7467154034315098659, guid: 7a2ce8647e4436744b0138b8e2c21aa0,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7467154034315098659, guid: 7a2ce8647e4436744b0138b8e2c21aa0,
         type: 3}
@@ -5225,7 +5225,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0.05
   m_AngularDrag: 5
-  m_GravityScale: 0.01
+  m_GravityScale: 0.05
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -5756,7 +5756,7 @@ Transform:
   - {fileID: 8115211604946203645}
   - {fileID: 5862696402404682056}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -26.035002}
 --- !u!1 &6550009635626094222
 GameObject:
