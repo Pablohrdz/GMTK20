@@ -3614,24 +3614,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ec40c551d0464f5bb91ac6be84338bf, type: 3}
---- !u!1 &1770657187 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7240408221280034840, guid: d2b28d5a73ee33a4e9ef6906d1dfcf40,
-    type: 3}
-  m_PrefabInstance: {fileID: 4545791481225923393}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1770657191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1770657187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55ea97c77a3b44658be474ae29e61fc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1852752937 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 480086032731463480, guid: 9b9018c6beefa402685c1c50b266bcb8,
@@ -4304,21 +4286,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5249036971893337104, guid: d2b28d5a73ee33a4e9ef6906d1dfcf40,
-        type: 3}
-      propertyPath: clips.Array.size
-      value: 71
-      objectReference: {fileID: 0}
-    - target: {fileID: 5249036971893337104, guid: d2b28d5a73ee33a4e9ef6906d1dfcf40,
-        type: 3}
-      propertyPath: clips.Array.data[69]
-      value: 
-      objectReference: {fileID: 8300000, guid: e5ec35c0f651db84d861638d3e294029, type: 3}
-    - target: {fileID: 5249036971893337104, guid: d2b28d5a73ee33a4e9ef6906d1dfcf40,
-        type: 3}
-      propertyPath: clips.Array.data[70]
-      value: 
-      objectReference: {fileID: 8300000, guid: b31125e950496b44893f2bfa6dbcd053, type: 3}
     - target: {fileID: 7240408221280034840, guid: d2b28d5a73ee33a4e9ef6906d1dfcf40,
         type: 3}
       propertyPath: m_Name
