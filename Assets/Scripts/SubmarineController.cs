@@ -119,12 +119,16 @@ public class SubmarineController : MonoBehaviour
         var enemy = collision.gameObject.GetComponent<Enemy>();
         if (enemy != null)
         {
-            AudioManager.instance.sendAudioEvent(AudioEvent.Play, this.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "swordfish-submarine-collision", volume = 0.7f, mixerChannelName = "Submarine" });
+            AudioManager.instance.sendAudioEvent(AudioEvent.Play, this.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "swordfish-submarine-collision", volume = 0.9f, mixerChannelName = "Submarine" });
             Swordfish swordfish = collision.gameObject.GetComponent<Swordfish>();
             if (swordfish != null)
             {
-                AudioManager.instance.sendAudioEvent(AudioEvent.Play, enemy.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "swordfish-attack", volume = 1.0f, mixerChannelName = "Fauna" });
+                AudioManager.instance.sendAudioEvent(AudioEvent.Play, this.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "swordfish-attack", volume = 1.0f, mixerChannelName = "Fauna" });
                 swordfish.DestroyCrosshair();
+            }
+            else
+            {
+                AudioManager.instance.sendAudioEvent(AudioEvent.Play, this.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "crab-hit", volume = 1.0f, mixerChannelName = "Fauna" });
             }
 
             Destroy(collision.gameObject); // TODO: animate, remember to disable collider while it fades
@@ -188,7 +192,7 @@ public class SubmarineController : MonoBehaviour
         if (collision.gameObject.tag == "Wrench")
         {
             // TODO: better audio
-            AudioManager.instance.sendAudioEvent(AudioEvent.Play, this.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "submarine-crash", volume = 0.7f, mixerChannelName = "Submarine", throttleSeconds = 0.2f });
+            AudioManager.instance.sendAudioEvent(AudioEvent.Play, this.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "repair", volume = 0.7f, mixerChannelName = "Submarine", throttleSeconds = 0.2f });
 
             if (emitters.Count > 1)
             {
