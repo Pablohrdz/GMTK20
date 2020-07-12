@@ -118,7 +118,7 @@ public class AudioManager : MonoBehaviour
     {
         get
         {
-            return GameObject.Find("Audio").GetComponent<AudioManager>();
+            return GameObject.FindWithTag("GameController").GetComponent<AudioManager>();
         }
     }
 
