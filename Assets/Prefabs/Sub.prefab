@@ -139,6 +139,7 @@ MonoBehaviour:
   airLossMultiplier: 1
   pool: []
   HasCollectedPearl: 0
+  crashDuration: 1
 --- !u!50 &975443978468954046
 Rigidbody2D:
   serializedVersion: 4

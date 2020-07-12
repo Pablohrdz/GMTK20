@@ -9,10 +9,14 @@ public class SubmarineController : MonoBehaviour
     public float airMax;
     public float air;
     public float airLossMultiplier;
-    List<Emitter> emitters;
-    Rigidbody2D rb;
     public List<GameObject> pool;
     public bool HasCollectedPearl;
+    public float crashDuration;
+
+    List<Emitter> emitters;
+    Rigidbody2D rb;
+    float timeOfCrash;
+    bool crashing { get { return Time.time - timeOfCrash < crashDuration; } }
 
     void Start()
     {
@@ -26,7 +30,6 @@ public class SubmarineController : MonoBehaviour
             {
                 emitter.letter = InstantiateLetter(emitter);
                 emitters.Add(emitter);
-
             }
         }
     }
@@ -37,10 +40,9 @@ public class SubmarineController : MonoBehaviour
         {
             foreach (var emitter in emitters)
             {
-                if (!emitter.active) { continue; }
-                bool holeCovered = Input.GetKey(emitter.linkedKey);
-                emitter.enableParticles(!holeCovered);
-                if (!holeCovered)
+                bool holeUncovered = !Input.GetKey(emitter.linkedKey) || crashing;
+                emitter.enableParticles(holeUncovered);
+                if (holeUncovered)
                 {
                     emitter.disableLetter();
                     Vector3 force = -emitter.transform.forward.normalized * emitter.emissionForce;
@@ -102,6 +104,11 @@ public class SubmarineController : MonoBehaviour
         // Check for collisions with the environment to shake the camera.
         if (collision.gameObject.tag == "Environment")
         {
+            // To avoid stacking crashes
+            if (!crashing)
+            {
+                timeOfCrash = Time.time;
+            }
             CameraShake.Instance.ShakeCamera(10.0f, 0.3f /* secs */);
         }
     }
@@ -157,5 +164,4 @@ public class SubmarineController : MonoBehaviour
         Object.Destroy(emitter.letter);
         emitter.letter = InstantiateLetter(emitter);
     }
-
 }
