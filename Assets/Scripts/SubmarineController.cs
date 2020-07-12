@@ -13,12 +13,16 @@ public class SubmarineController : MonoBehaviour
 
     List<Emitter> emitters;
     Rigidbody2D rb;
+    GamePause gamePause;
     float timeOfCrash;
     bool crashing { get { return Time.time - timeOfCrash < crashDuration; } }
+    bool healing;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        gamePause =  GameObject.FindWithTag("GameController").GetComponent<GamePause>();
 
         emitters = new List<Emitter>();
         foreach(Transform child in transform.Find("Emitters"))
@@ -78,9 +82,27 @@ public class SubmarineController : MonoBehaviour
                 // TODO: dead animation
             }
         }
-        if (Input.GetKeyDown(KeyCode.O))
+        //if (Input.GetKeyDown(KeyCode.O))
+        //{
+        //    SwapLetters();
+        //}
+
+        if (healing)
         {
-            SwapLetters();
+            foreach (var emitter in emitters)
+            {
+                bool selectedToHeal = Input.GetKeyDown(emitter.linkedKey);
+
+                if (selectedToHeal)
+                {
+                    // TODO: sound
+                    emitters.Remove(emitter);
+                    GameObject.Destroy(emitter.gameObject);
+                    healing = false;
+                    gamePause.Healing(false);
+                    break;
+                }
+            }
         }
     }
 
@@ -134,17 +156,6 @@ public class SubmarineController : MonoBehaviour
             }
             CameraShake.Instance.ShakeCamera(10.0f, 0.3f /* secs */);
         }
-
-        if (collision.gameObject.tag == "Wrench")
-        {
-            AudioManager.instance.sendAudioEvent(AudioEvent.Play, this.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "submarine-crash", volume = 0.7f, mixerChannelName = "Submarine", throttleSeconds = 0.2f });
-            // To avoid stacking crashes
-            if (!crashing)
-            {
-                timeOfCrash = Time.time;
-            }
-            CameraShake.Instance.ShakeCamera(10.0f, 0.3f /* secs */);
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -163,6 +174,20 @@ public class SubmarineController : MonoBehaviour
             if (air > airMax)
             {
                 air = airMax;
+            }
+        }
+
+        if (collision.gameObject.tag == "Wrench")
+        {
+            // TODO: better audio
+            AudioManager.instance.sendAudioEvent(AudioEvent.Play, this.GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "submarine-crash", volume = 0.7f, mixerChannelName = "Submarine", throttleSeconds = 0.2f });
+
+            if (emitters.Count > 1)
+            {
+                // TODO: animate
+                GameObject.Destroy(collision.gameObject);
+                gamePause.Healing(true);
+                healing = true;
             }
         }
     }

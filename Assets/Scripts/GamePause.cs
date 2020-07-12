@@ -5,18 +5,39 @@ using UnityEngine;
 public class GamePause : MonoBehaviour
 {
     bool gamePaused;
+    bool healing;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !healing)
         {
-            PauseGame();
+            Pause(!gamePaused);
         }
     }
 
-    void PauseGame()
+    void Pause(bool pause)
     {
-        gamePaused = !gamePaused;
-        Time.timeScale = gamePaused ? 0 : 1;
+        if (!healing)
+        {
+            // TODO: show text
+            gamePaused = pause;
+            Time.timeScale = gamePaused ? 0 : 1;
+        }
+    }
+
+    public void Healing(bool healing)
+    {
+        if (healing)
+        {
+            // TODO: show text
+            Pause(true);
+            this.healing = true;
+        }
+        else
+        {
+            // TODO: remove text
+            this.healing = false;
+            Pause(false);
+        }
     }
 }
