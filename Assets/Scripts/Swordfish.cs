@@ -13,11 +13,13 @@ public class Swordfish : Enemy
     public float Speed = 2.0f;
     public float DetectionRadius = 15.0f;
     public float TelegraphDuration = 1.0f;
+    public GameObject CrosshairPrefab;
 
     private Transform LastPlayerTransform;
     private Transform Player;
     private bool IsChasing;
     private SpriteRenderer Renderer;
+    private GameObject InstancedCrosshair;
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +43,8 @@ public class Swordfish : Enemy
             IsChasing = false;
             Renderer.material.color = Color.white;
             transform.right = Vector3.right;
+
+            DestroyCrosshair();
         }
     }
 
@@ -52,6 +56,9 @@ public class Swordfish : Enemy
 
             // Record original position where the fish was triggered
             LastPlayerTransform = Player;
+
+            // Instance crosshair on player position
+            InstancedCrosshair = Instantiate(CrosshairPrefab, LastPlayerTransform.position, Quaternion.identity);
 
             // Change color
             Renderer.material.color = Color.red;
@@ -67,4 +74,13 @@ public class Swordfish : Enemy
         transform.position = Vector2.MoveTowards(transform.position, LastPlayerTransform.position, Speed * Time.deltaTime);
     }
 
+    
+    public void DestroyCrosshair()
+    {
+        if (InstancedCrosshair != null)
+        {
+            Destroy(InstancedCrosshair);
+            InstancedCrosshair = null;
+        }
+    }
 }

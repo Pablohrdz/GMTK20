@@ -131,7 +131,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!95 &3359841414427445704
 Animator:
   serializedVersion: 3
@@ -168,3 +168,5 @@ MonoBehaviour:
   Speed: 3
   DetectionRadius: 15
   TelegraphDuration: 2
+  CrosshairPrefab: {fileID: 6489510200226522526, guid: a337fc235043db546aaf140a9af92fb0,
+    type: 3}
