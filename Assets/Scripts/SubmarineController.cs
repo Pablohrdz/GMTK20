@@ -36,6 +36,7 @@ public class SubmarineController : MonoBehaviour
 
     void Update()
     {
+        var uncoveredNumber = 0;
         if (air >= 0)
         {
             foreach (var emitter in emitters)
@@ -44,6 +45,8 @@ public class SubmarineController : MonoBehaviour
                 emitter.enableParticles(holeUncovered);
                 if (holeUncovered)
                 {
+                    uncoveredNumber += 1;
+                    // To avoid stacking crashes
                     emitter.disableLetter();
                     Vector3 force = -emitter.transform.forward.normalized * emitter.emissionForce;
                     rb.AddForceAtPosition(force, emitter.transform.position);
@@ -52,7 +55,21 @@ public class SubmarineController : MonoBehaviour
                 else
                 {
                     emitter.enableLetter();
+                    // AudioManager.instance.sendAudioEvent(AudioEvent.Play, transform.Find("Emitters").GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "air-leak-fix", volume = 1.0f, mixerChannelName = "Leaks" });
                 }
+            }
+            if (uncoveredNumber > 0)
+            {
+                // Debug.Log("Playing leak");
+                //  0.4f + (uncoveredNumber/(emitters.Count+0.0f))*0.6f
+                AudioManager.instance.sendAudioEvent(AudioEvent.Play, transform.Find("Emitters").GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "air-leak-loop", volume =(uncoveredNumber / (emitters.Count + 0.0f)), mixerChannelName = "Leaks", loop=true });
+                AudioManager.instance.sendAudioEvent(AudioEvent.Play, emitters[0].GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "submarine-bubbles-loop", volume =  0.2f + (uncoveredNumber / (emitters.Count + 0.0f)) * 0.8f , mixerChannelName = "Leaks", loop = true });
+            }
+            else
+            {
+                AudioManager.instance.sendAudioEvent(AudioEvent.Stop, emitters[0].GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "submarine-bubbles-loop", volume = 1.0f});
+                AudioManager.instance.sendAudioEvent(AudioEvent.Stop, transform.Find("Emitters").GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "air-leak-loop", volume = 1.0f });
+                
             }
         }
         else
