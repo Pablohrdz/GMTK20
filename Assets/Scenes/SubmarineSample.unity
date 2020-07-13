@@ -631,6 +631,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 975443978468954046, guid: 2d415434c7fc8434db394baa0ad67445,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 4104868100259347119, guid: 2d415434c7fc8434db394baa0ad67445,
+        type: 3}
+      propertyPath: airLossMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6039670754893362004, guid: 2d415434c7fc8434db394baa0ad67445,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2477,7 +2487,7 @@ PrefabInstance:
     - target: {fileID: 7432421509859734848, guid: 48f4feddde29e7f40b3ca5c25d215eab,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -46.91049
+      value: -46.910484
       objectReference: {fileID: 0}
     - target: {fileID: 7432421509859734848, guid: 48f4feddde29e7f40b3ca5c25d215eab,
         type: 3}
