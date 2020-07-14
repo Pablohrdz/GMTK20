@@ -48,11 +48,7 @@ public class Squid : MonoBehaviour
 
         if (!IsRunning)
         {
-            AudioManager.instance.sendAudioEvent(
-                AudioEvent.Play,
-                this.GetComponent<AudioSource>(),
-                new AudioEventArgs() { sampleId = "octopus-swim-stem", volume = 0.8f, throttleSeconds = 0.06f }
-            );
+            
             // Record original position where the squid
             LastPlayerTransform = Player;
             Renderer.material.color = Color.blue;
@@ -73,6 +69,12 @@ public class Squid : MonoBehaviour
             // Wait in order to telegraph action
             yield return new WaitForSeconds(TelegraphDuration);
         }
+
+        AudioManager.instance.sendAudioEvent(
+               AudioEvent.Play,
+               this.GetComponent<AudioSource>(),
+               new AudioEventArgs() { sampleId = "octopus-swim-stem", volume = 0.7f, throttleSeconds = Random.Range(0.08f, 2.0f) }
+           );
         // Move away from target
         //transform.position = Vector2.MoveTowards(transform.position, LastPlayerTransform.position, Speed * Time.deltaTime);
         var direction = transform.position - LastPlayerTransform.position;

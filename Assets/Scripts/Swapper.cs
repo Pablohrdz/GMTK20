@@ -46,11 +46,7 @@ public class Swapper : MonoBehaviour
 
             // Record original position where the fish was triggered
             LastPlayerTransform = Player;
-            AudioManager.instance.sendAudioEvent(
-                AudioEvent.Play,
-                this.GetComponent<AudioSource>(),
-                new AudioEventArgs() { sampleId = "big-octopus-swim-stem", volume = 0.8f, throttleSeconds = 0.1f }
-            );
+           
 
 
             //Renderer.material.color = Color.magenta;
@@ -60,6 +56,11 @@ public class Swapper : MonoBehaviour
             // Wait in order to telegraph action
             yield return new WaitForSeconds(TelegraphDuration);
         }
+        AudioManager.instance.sendAudioEvent(
+               AudioEvent.Play,
+               this.GetComponent<AudioSource>(),
+               new AudioEventArgs() { sampleId = "big-octopus-swim-stem", volume = 0.5f, throttleSeconds = 0.1f }
+           );
 
         transform.up = transform.position - LastPlayerTransform.position;
         // Move towards target

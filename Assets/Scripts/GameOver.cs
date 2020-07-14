@@ -57,8 +57,6 @@ public class GameOver : MonoBehaviour
         }
         AudioManager.instance.mixer.SetFloat("volumeMaster", 0.0f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        
-        Debug.Log("Restarted Game");
     }
 
     public void ExitGame()

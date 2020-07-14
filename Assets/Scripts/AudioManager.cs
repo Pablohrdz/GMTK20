@@ -153,10 +153,7 @@ public class AudioManager : MonoBehaviour
                         {
                             break;
                         }
-                        if (args.sampleId == "big-octopus-swim-stem")
-                        {
-                            Debug.Log("pLAYING SOUND");
-                        }
+ 
                         throttleTimers[args.sampleId] = time;
                         if (args.delaySeconds > 0.0)
                         {

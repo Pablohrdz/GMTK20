@@ -6,9 +6,7 @@ using UnityEngine;
 public class LoadNextLevel : MonoBehaviour
 {
     public void LoadNextScene()
-    {
-        Debug.Log("Scene " + ((SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings) +  " " + SceneManager.GetActiveScene().buildIndex + " count  " + SceneManager.sceneCount);
-        
+    { 
         SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings);
     }
 
