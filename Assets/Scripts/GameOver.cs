@@ -10,7 +10,8 @@ public class GameOver : MonoBehaviour
 
     private GameObject Player;
     private float timerSeconds;
-    private bool startFade = false;
+    private bool fadeGame = false;
+    private IEnumerator audioCoroutine;
 
     private void Start()
     {
@@ -26,10 +27,12 @@ public class GameOver : MonoBehaviour
         if (Player.GetComponent<SubmarineController>().gameEnded)
         {
             // Display Game Over screen
-            if (!startFade)
+            if (!fadeGame)
             {
-                startFade = true;
+                fadeGame = true;
                 StartCoroutine(DoFade());
+                audioCoroutine = AudioManager.instance.StartFade("volumeMaster", 13.0f, 0.0f);
+                StartCoroutine(audioCoroutine);
                 GameOverScreen.SetActive(true);
             }
         }
@@ -46,7 +49,13 @@ public class GameOver : MonoBehaviour
     {
         //StartCoroutine(AudioManager.instance.StartFade("volumeMaster", 3.0f, 1.0f));
         timerSeconds = 0.0f;
-        AudioManager.instance.mixer.SetFloat("volumeMaster", 1.0f);
+        
+        fadeGame = false;
+        if (audioCoroutine != null)
+        {
+            StopCoroutine(audioCoroutine);
+        }
+        AudioManager.instance.mixer.SetFloat("volumeMaster", 0.0f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         
         Debug.Log("Restarted Game");
@@ -60,7 +69,6 @@ public class GameOver : MonoBehaviour
     IEnumerator DoFade()
     {
         CanvasGroup canvasGroup = GetComponent<CanvasGroup>();
-         Debug.Log(" init " + fadeTimeSeconds + " timer " + timerSeconds);
 
         while (timerSeconds < fadeTimeSeconds)
         {

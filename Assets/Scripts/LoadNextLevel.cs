@@ -7,7 +7,9 @@ public class LoadNextLevel : MonoBehaviour
 {
     public void LoadNextScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Debug.Log("Scene " + ((SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings) +  " " + SceneManager.GetActiveScene().buildIndex + " count  " + SceneManager.sceneCount);
+        
+        SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

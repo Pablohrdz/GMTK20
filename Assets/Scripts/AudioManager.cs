@@ -120,6 +120,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip[] clips;
     private Dictionary<string, Sample> samples;
     private Dictionary<string, float> throttleTimers = new Dictionary<string, float>();
+    private bool fadeActive = false;
     // pseudo singleton, without all the problems
     public static AudioManager instance
     {
@@ -152,13 +153,17 @@ public class AudioManager : MonoBehaviour
                         {
                             break;
                         }
+                        if (args.sampleId == "big-octopus-swim-stem")
+                        {
+                            Debug.Log("pLAYING SOUND");
+                        }
                         throttleTimers[args.sampleId] = time;
                         if (args.delaySeconds > 0.0)
                         {
                             StartCoroutine(delayedFunc(() => sample.play(source, mixerGroup, args), args.delaySeconds));
                         }
                         else
-                        {
+                        {        
                             sample.play(source, mixerGroup, args);
                         }
                         break;
@@ -180,6 +185,7 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         var time = Time.time;
+        AudioManager.instance.mixer.SetFloat("volumeMaster", 0.0f);
         Regex rx = new Regex(@"(.*)[\-]([0-9]+)$",
           RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
@@ -238,6 +244,7 @@ public class AudioManager : MonoBehaviour
 
     public IEnumerator StartFade(string exposedParam, float duration, float targetVolume)
     {
+
         float currentTime = 0;
         float currentVol;
         mixer.GetFloat(exposedParam, out currentVol);
@@ -252,6 +259,11 @@ public class AudioManager : MonoBehaviour
             yield return null;
         }
         yield break;
+    }
+
+    public void stopFade()
+    {
+
     }
 }
 

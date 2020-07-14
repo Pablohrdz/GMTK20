@@ -105,8 +105,7 @@ public class SubmarineController : MonoBehaviour
                 AudioManager.instance.sendAudioEvent(AudioEvent.Stop, transform.Find("Emitters").GetComponent<AudioSource>(), new AudioEventArgs() { sampleId = "air-leak-loop", volume = 1.0f });
                 gameEnded = true;
                 // TODO: dead animation
-
-                StartCoroutine(AudioManager.instance.StartFade("volumeMaster", 13.0f, 0.0f));
+                
             }
         }    
     }
