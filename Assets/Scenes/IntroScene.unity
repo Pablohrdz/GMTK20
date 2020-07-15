@@ -133,10 +133,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goal
       objectReference: {fileID: 0}
+    - target: {fileID: 1688724747269653844, guid: 6136a5463fbbc97468effb10d6a158e2,
+        type: 3}
+      propertyPath: m_Radius
+      value: 2.50481
+      objectReference: {fileID: 0}
     - target: {fileID: 7025024974446190672, guid: 6136a5463fbbc97468effb10d6a158e2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 382.07
+      value: 381.33
       objectReference: {fileID: 0}
     - target: {fileID: 7025024974446190672, guid: 6136a5463fbbc97468effb10d6a158e2,
         type: 3}
@@ -186,6 +191,31 @@ PrefabInstance:
     - target: {fileID: 7025024974446190672, guid: 6136a5463fbbc97468effb10d6a158e2,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9158950017373440001, guid: 6136a5463fbbc97468effb10d6a158e2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9158950017373440001, guid: 6136a5463fbbc97468effb10d6a158e2,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9158950017373440001, guid: 6136a5463fbbc97468effb10d6a158e2,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9158950017373440001, guid: 6136a5463fbbc97468effb10d6a158e2,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9158950017373440001, guid: 6136a5463fbbc97468effb10d6a158e2,
+        type: 3}
+      propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2216,7 +2246,6 @@ MonoBehaviour:
     - "I had heard the legends\u2026"
     - "\u2026 a giant pearl that had been growing for hundreds of years at the bottom
       of the sea."
-    - I imagined it hanging from her neck on our wedding day.
     - For such a sight I braved the ocean depths.
 --- !u!114 &1479812317
 MonoBehaviour:
@@ -2661,7 +2690,7 @@ PolygonCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 40.96, y: 40.96}
-    newSize: {x: 40.96, y: 40.96}
+    newSize: {x: 21.76452, y: 40.672977}
     adaptiveTilingThreshold: 0.5
     drawMode: 2
     adaptiveTiling: 0
@@ -2762,7 +2791,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 40.96, y: 40.96}
+  m_Size: {x: 21.76452, y: 40.672977}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2776,7 +2805,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1738467721}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 394.6, y: 22.6, z: 0}
+  m_LocalPosition: {x: 458.096, y: 22.41, z: 0}
   m_LocalScale: {x: 6.6153073, y: 1.3466, z: 1.3466}
   m_Children: []
   m_Father: {fileID: 0}
