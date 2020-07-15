@@ -30,7 +30,7 @@ public class DialogueManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Sentences = new Queue<string>();
+
     }
 
     public void StartDialogue(Dialogue dialogue)
@@ -39,6 +39,8 @@ public class DialogueManager : MonoBehaviour
         Animator.SetBool("IsOpen", IsOpen);
         NameText.text = dialogue.Name;
 
+        Sentences = new Queue<string>();
+        Debug.Log("Sentences : " + string.Join(",", dialogue.Sentences));
         Sentences.Clear();
 
         foreach(string sentence in dialogue.Sentences)
@@ -51,6 +53,7 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
+        Debug.Log("Sentence count: " + Sentences.Count );
         if(Sentences.Count == 0)
         {
             EndDialogue();
@@ -58,6 +61,8 @@ public class DialogueManager : MonoBehaviour
         }
 
         string sentence = Sentences.Dequeue();
+
+        Debug.Log("Next Sentence: " + sentence);
 
         ContinueText.text = Sentences.Count > 0 ? ">>" : string.Empty;
 
@@ -78,6 +83,7 @@ public class DialogueManager : MonoBehaviour
     IEnumerator TypeSentence(string sentence)
     {
         DialogueText.text = "";
+        Debug.Log("Coroutine start sentence: " + sentence);
         foreach(char letter in sentence.ToCharArray())
         {
             DialogueText.text += letter;

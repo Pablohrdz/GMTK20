@@ -172,7 +172,7 @@ public class AudioManager : MonoBehaviour
             }
             else
             {
-                Debug.LogError("Sample unavaliable: '" + args.sampleId + "' make sure to add it to the 'clips' array");
+               // Debug.LogError("Sample unavaliable: '" + args.sampleId + "' make sure to add it to the 'clips' array");
             }
         }
         return false;
