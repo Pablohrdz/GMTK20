@@ -636,6 +636,11 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 0.06
       objectReference: {fileID: 0}
+    - target: {fileID: 975443978468954046, guid: 2d415434c7fc8434db394baa0ad67445,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 3de7f01287054442598836bd0cb7c64d, type: 2}
     - target: {fileID: 4104868100259347119, guid: 2d415434c7fc8434db394baa0ad67445,
         type: 3}
       propertyPath: airLossMultiplier

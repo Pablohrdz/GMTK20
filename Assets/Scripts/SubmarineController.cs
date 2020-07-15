@@ -67,7 +67,7 @@ public class SubmarineController : MonoBehaviour
                     emitter.crashing = false;
                 }
 
-                bool holeUncovered = emitter.active && (!keyPressed || emitter.crashing || crashing);
+                bool holeUncovered = emitter.active && (!keyPressed || emitter.crashing && crashing);
                 emitter.enableParticles(holeUncovered);
                 if (holeUncovered)
                 {
