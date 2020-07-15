@@ -54,7 +54,6 @@ public class SubmarineController : MonoBehaviour
                     GameObject.Destroy(emitter.gameObject);
                     healing = false;
                     gamePause.Healing(false);
-                    break;
                 }
             }
         }
@@ -62,7 +61,13 @@ public class SubmarineController : MonoBehaviour
         {
             foreach (var emitter in emitters)
             {
-                bool holeUncovered = emitter.active && (!Input.GetKey(emitter.linkedKey) || crashing);
+                bool keyPressed = Input.GetKey(emitter.linkedKey);
+                if (emitter.crashing && Input.GetKeyDown(emitter.linkedKey))
+                {
+                    emitter.crashing = false;
+                }
+
+                bool holeUncovered = emitter.active && (!keyPressed || emitter.crashing || crashing);
                 emitter.enableParticles(holeUncovered);
                 if (holeUncovered)
                 {
@@ -162,6 +167,10 @@ public class SubmarineController : MonoBehaviour
             // To avoid stacking crashes
             if (!crashing)
             {
+                foreach (Emitter emitter in emitters)
+                {
+                    emitter.crashing = true;
+                }
                 timeOfCrash = Time.time;
             }
             CameraShake.Instance.ShakeCamera(10.0f, 0.3f /* secs */);

@@ -9,6 +9,7 @@ public class Emitter : MonoBehaviour
     GameObject letter;
     public GameObject stampPrefab;
     public bool active = true;
+    public bool crashing = false;
     ParticleSystem particles;
     public float particleIntensityMultiplier = 30;
 
