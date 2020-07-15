@@ -8,6 +8,7 @@ public class DialogueTrigger : MonoBehaviour
 
     public void TriggerDialogue()
     {
+        // Debug.Log("DialogueManager Instance null? " + (DialogueManager.Instance == null));
         DialogueManager.Instance.StartDialogue(Dialogue);
     }
 
