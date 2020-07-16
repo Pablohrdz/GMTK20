@@ -146,7 +146,7 @@ PrefabInstance:
     - target: {fileID: 7025024974446190672, guid: 6136a5463fbbc97468effb10d6a158e2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 43.3
+      value: 49.48
       objectReference: {fileID: 0}
     - target: {fileID: 7025024974446190672, guid: 6136a5463fbbc97468effb10d6a158e2,
         type: 3}
@@ -216,7 +216,12 @@ PrefabInstance:
     - target: {fileID: 9158950017373440001, guid: 6136a5463fbbc97468effb10d6a158e2,
         type: 3}
       propertyPath: m_Color.a
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9158950017373440001, guid: 6136a5463fbbc97468effb10d6a158e2,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6136a5463fbbc97468effb10d6a158e2, type: 3}
@@ -3010,7 +3015,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0.05
   m_AngularDrag: 5
-  m_GravityScale: 0.06
+  m_GravityScale: 0.04
   m_Material: {fileID: 6200000, guid: 3de7f01287054442598836bd0cb7c64d, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1

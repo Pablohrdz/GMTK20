@@ -349,7 +349,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedKey: 106
-  emissionForce: 1.5
+  emissionForce: 1
+  destroyed: 0
   DetectionRadius: 15
 --- !u!82 &436396345740193640
 AudioSource:
