@@ -2391,6 +2391,12 @@ MonoBehaviour:
   ParallaxEffectMultiplier: {x: -0.05, y: 0}
   InfiniteHorizontal: 0
   InfiniteVertical: 0
+--- !u!95 &1394068182 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2906377356017610848, guid: 64c79fa3935faff47ab150c76181f7f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 5761563828550487158}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1436656338 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 175728471076897517, guid: e99fcaee5f5ffb944be701c688e7014e,
@@ -6738,8 +6744,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Animator
       value: 
-      objectReference: {fileID: 7467154034315098660, guid: 7a2ce8647e4436744b0138b8e2c21aa0,
-        type: 3}
+      objectReference: {fileID: 1394068182}
     - target: {fileID: 1948392488072578484, guid: 926b9ad51df2dd74e8553546a051e78b,
         type: 3}
       propertyPath: m_LocalPosition.x
