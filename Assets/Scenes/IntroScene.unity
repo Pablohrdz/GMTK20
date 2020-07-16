@@ -2106,10 +2106,9 @@ MonoBehaviour:
   Dialogue:
     Name: Captain Sancho
     Sentences:
-    - "I had heard the legends\u2026"
-    - "\u2026 a giant pearl that had been growing for hundreds of years at the bottom
-      of the sea."
-    - For such a sight I braved the ocean depths.
+    - We lost the turbines!
+    - Then beasts perforated the hatch! Things keep getting worse...
+    - But I soon found I could use the leaks to help me navigate the depths
 --- !u!114 &1479812317
 MonoBehaviour:
   m_ObjectHideFlags: 0

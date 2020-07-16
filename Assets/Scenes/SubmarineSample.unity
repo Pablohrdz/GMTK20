@@ -697,7 +697,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 5.7181664, y: -4.6003895}
+  m_Offset: {x: -1.8274527, y: 0.8217869}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -708,7 +708,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 31.96748, y: 10.200779}
+  m_Size: {x: 5.9560795, y: 21.045132}
   m_EdgeRadius: 0
 --- !u!114 &340084899
 MonoBehaviour:
@@ -725,8 +725,11 @@ MonoBehaviour:
   Dialogue:
     Name: Captain Sancho
     Sentences:
-    - Beasts perforated the hatch.
-    - But I soon found I could use the leaks to help me navigate the depths.
+    - I had heard the legends...
+    - ...a giant pearl that had been growing for hundreds of years at the bottom
+      of the sea.
+    - I imagined it hanging from her neck on our wedding day
+    - For such a sight I braved the ocean depths
 --- !u!4 &340084900
 Transform:
   m_ObjectHideFlags: 0
@@ -735,7 +738,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 340084897}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.9, y: 52.7, z: -1.7144216}
+  m_LocalPosition: {x: -24.3, y: 52.2, z: -1.7144216}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -971,6 +974,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ec40c551d0464f5bb91ac6be84338bf, type: 3}
+--- !u!114 &505977316 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2906377356308168256, guid: 64c79fa3935faff47ab150c76181f7f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 5761563828550487158}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &518362019
 Animator:
   serializedVersion: 3
@@ -2275,6 +2290,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ec40c551d0464f5bb91ac6be84338bf, type: 3}
+--- !u!114 &1281272847 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2906377356387031747, guid: 64c79fa3935faff47ab150c76181f7f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 5761563828550487158}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1378332971
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3187,6 +3214,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1837761766 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2906377356568359355, guid: 64c79fa3935faff47ab150c76181f7f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 5761563828550487158}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1852752937 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 480086032731463480, guid: 9b9018c6beefa402685c1c50b266bcb8,
@@ -6341,12 +6380,12 @@ PrefabInstance:
     - target: {fileID: 2906377356017610855, guid: 64c79fa3935faff47ab150c76181f7f0,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 191.4
+      value: 54.8
       objectReference: {fileID: 0}
     - target: {fileID: 2906377356017610855, guid: 64c79fa3935faff47ab150c76181f7f0,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -74.9
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2906377356017610855, guid: 64c79fa3935faff47ab150c76181f7f0,
         type: 3}
@@ -6684,20 +6723,17 @@ PrefabInstance:
         type: 3}
       propertyPath: ContinueText
       value: 
-      objectReference: {fileID: 7467154034058490884, guid: 7a2ce8647e4436744b0138b8e2c21aa0,
-        type: 3}
+      objectReference: {fileID: 505977316}
     - target: {fileID: 1948392488072578483, guid: 926b9ad51df2dd74e8553546a051e78b,
         type: 3}
       propertyPath: DialogueText
       value: 
-      objectReference: {fileID: 7467154034872040447, guid: 7a2ce8647e4436744b0138b8e2c21aa0,
-        type: 3}
+      objectReference: {fileID: 1837761766}
     - target: {fileID: 1948392488072578483, guid: 926b9ad51df2dd74e8553546a051e78b,
         type: 3}
       propertyPath: NameText
       value: 
-      objectReference: {fileID: 7467154034078699655, guid: 7a2ce8647e4436744b0138b8e2c21aa0,
-        type: 3}
+      objectReference: {fileID: 1281272847}
     - target: {fileID: 1948392488072578483, guid: 926b9ad51df2dd74e8553546a051e78b,
         type: 3}
       propertyPath: Animator
